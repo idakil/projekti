@@ -1,34 +1,48 @@
-let express = require('express');
-let app = express();
 
-let server = app.listen(8081, function () {
-    var host = server.address().address
-    var port = server.address().port
+const express = require('express'),
+  app = express(),
+  bodyParser = require('body-parser');
+  port = process.env.PORT || 3000;
 
-    console.log("Example app listening at http://%s:%s", host, port)
-})
 
+const mysql = require('mysql');
+const mc = mysql.createConnection({
+    host: 'localhost',
+    user: 'username',
+    password: 'password',
+    database: 'restaurant_db'
+}); 
+mc.connect();
+
+let server = app.listen(port);
 app.use(express.static('public'));
-let io = require('socket.io')(server);
-let mysql = require('mysql');
+console.log('API server started on: ' + port);
 
-let con = mysql.createConnection({
-    host: "localhost",
-    user: "username",
-    password: "password",
-    database: "db"
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
+let io = require('socket.io')(server);
+
+io.on('connection', function (socket) {
+    console.log('A user connected');
+    socket.on('disconnect', function () {
+        console.log('A user disconnected');
+    });
 });
 
-var restaurantArr = [];
-con.connect(function (err) {
-    if (err) throw err;
-    let query = "select * from restaurants"
-    con.query(query, function (err, result, fields) {
-        if (err) throw err;
-        if (result.length) {
-            for (var i = 0; i < result.length; i++) {
-                restaurantArr.push(result[i]);
-            }
+
+app.get('/restaurants', sendRestaurants);
+function sendRestaurants (req, res) {
+    let query = "select * from restaurants inner join opening_hours on restaurants.id=opening_hours.restaurant_id"
+    mc.query(query, function (err, result) {
+        if (err){
+            console.log("error ", err);
+        }
+        else {
+            res.send(result)
         }
     })
-});
+}
+
+
