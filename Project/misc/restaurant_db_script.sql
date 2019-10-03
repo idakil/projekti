@@ -27,6 +27,7 @@ create table reviews(
 );
 
 insert into reviews values(0, 1, 5, "Mahtavaa ruokaa");
+insert into reviews values(1, 1, 2, "Aika pahaa lol");
 
 create table opening_hours(
 	id int NOT NULL AUTO_INCREMENT,
