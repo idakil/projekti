@@ -10,12 +10,13 @@ create table restaurants (
     city varchar(50),
     link varchar(255),
     restaurant_desc varchar(255),
+    rating float,
     primary key (id)
 );
 
 insert into restaurants values (0, "OmNam", "Annankatu 29", 
 "00100", "Helsinki", "http://omnam.fi/",
-"Vegaanista ruokaa rakkaudella");
+"Vegaanista ruokaa rakkaudella", null);
     
 create table reviews(
 	id int NOT NULL AUTO_INCREMENT,
