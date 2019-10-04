@@ -1,0 +1,66 @@
+body {
+    padding: 0;
+    margin: 0;
+
+}
+.nav {
+    background-color: aqua;
+    width: 100%;
+    padding: 0% 0% 0% 0%;
+}
+.nav ul {
+    list-style-type: none;
+    
+    margin: 0;
+    
+    text-align: center;
+    
+}
+
+    .nav ul li {
+        display: inline-block;
+        padding: 0 0px;
+       
+        list-style: none;
+
+    }
+
+
+    .nav ul li a, visited {       
+        display: block;
+        margin: 0;
+        text-transform: uppercase;
+    }
+nav ul li a:hover {
+    
+    text-shadow: none;
+    
+    
+
+}
+.nav ul li:hover ul {
+    display: block;
+    padding: 0;
+    }
+.nav ul ul {
+    display: none;
+    position: absolute;
+
+    z-index: 1;
+}
+
+    .nav ul ul li {
+        display: block;
+        
+        width: inherit;
+        margin: 4px 0px 0px -1px;
+    }
+.nav ul ul li a {
+    padding: 0 59.75px;
+}
+    .nav ul ul li a:hover {
+         background-color: rgba(0,0,0,0.3);
+         transition: background-color ease 0.3s;
+         text-align: left;
+         width: inherit;
+    }

@@ -11,7 +11,7 @@ const mc = mysql.createConnection({
   user: 'username',
   password: 'password',
   database: 'restaurant_db',
-  port: '3308'
+  //port: '3308'
 }); 
 mc.connect();
 
