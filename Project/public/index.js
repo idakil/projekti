@@ -2,8 +2,12 @@ let socket = io();
 let restaurantArr = [];
 
 socket.on("success", success)
-function success(d){
-    document.getElementById("success").innerHTML = "Ravintola lisätty tietokantaan onnistuneesti!";
+function success(d) {
+    if (d == "success") {
+        document.getElementById("success").innerHTML = "Ravintola lisätty tietokantaan onnistuneesti!";
+    } else {
+        document.getElementById("success").innerHTML = "Ravintola ei lisätty!";
+    }
 }
 
 fetch("/restaurants")

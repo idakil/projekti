@@ -11,19 +11,25 @@
     <iframe name="hiddenFrame" style="display: none;"></iframe>
     <form action="/addRestaurant" method="POST" target="hiddenFrame">
         Restaurant name: <input type="text" name="name">
-        Address: <input type="text" name="address">
-        Zip code: <input type="text" name="zip">
-        City: <input type="text" name="city">
-        Web site: <input type="text" name="site">
-        Description: <input type="text" name="desc">
-        Monday: <input type="text" name="mon">
-        Tuesday: <input type="text" name="tue">
-        Wednesday: <input type="text" name="wed">
-        Thursday: <input type="text" name="thur">
-        Friday: <input type="text" name="fri">
-        Saturday: <input type="text" name="sat">
-        Sunday: <input type="text" name="sun">
-        
+        <fieldset>
+            Address: <input type="text" name="address">
+            Zip code: <input type="text" name="zip">
+            City: <input type="text" name="city">
+        </fieldset>
+        <fieldset>
+            Web site: <input type="text" name="site">
+            Description: <input type="text" name="desc">
+        </fieldset>
+        <fieldset>
+            Monday: <input type="text" name="mon">
+            Tuesday: <input type="text" name="tue">
+            Wednesday: <input type="text" name="wed">
+            Thursday: <input type="text" name="thur">
+            Friday: <input type="text" name="fri">
+            Saturday: <input type="text" name="sat">
+            Sunday: <input type="text" name="sun">
+        </fieldset>
+
         <input type="submit" value="Submit">
     </form>
     <div id="success"></div>
