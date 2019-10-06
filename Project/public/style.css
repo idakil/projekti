@@ -94,3 +94,29 @@ nav ul li a:hover {
 #content-wrapper {
    
 }
+
+#map {
+    height: 500px;
+    width: 100%;
+    border: 4px solid black;
+    margin-top: 20px;
+}
+#kaikkiinformaatio{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+}
+#mapWrapper{
+    width: 50%;
+    display: inline-block;
+}
+#infoWrapper{
+    width: 50%;
+    display: inline-block;
+}
+#headerWrapper{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
