@@ -69,16 +69,28 @@ nav ul li a:hover {
 
 
 .restaurant_listing {
+    width: 300px;
     border: 1px solid black;
     padding: 5px;
     display: inline-block;
+    cursor: pointer;
 
 }
 
 #frontpage_listings {
     
     text-align: center;
+    
 }
+
+.hidden {
+    width: 0;
+    height: 0;
+    padding: 0;
+    display: none;
+}
+
+
 #content-wrapper {
    
 }

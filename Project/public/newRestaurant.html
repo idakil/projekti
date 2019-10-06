@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+
+    <iframe name="hiddenFrame" style="display: none;"></iframe>
+    <form action="/addRestaurant" method="POST" target="hiddenFrame">
+        Restaurant name: <input type="text" name="name">
+        Address: <input type="text" name="address">
+        Zip code: <input type="text" name="zip">
+        City: <input type="text" name="city">
+        Web site: <input type="text" name="site">
+        Description: <input type="text" name="desc">
+        Monday: <input type="text" name="mon">
+        Tuesday: <input type="text" name="tue">
+        Wednesday: <input type="text" name="wed">
+        Thursday: <input type="text" name="thur">
+        Friday: <input type="text" name="fri">
+        Saturday: <input type="text" name="sat">
+        Sunday: <input type="text" name="sun">
+        
+        <input type="submit" value="Submit">
+    </form>
+    <div id="success"></div>
+
+
+</body>
+<script src="index.js"></script>
+
+</html>

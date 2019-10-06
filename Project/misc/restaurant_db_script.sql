@@ -5,34 +5,12 @@ use restaurant_db;
 create table restaurants ( 
 	id int NOT NULL AUTO_INCREMENT,
     restaurant_name varchar(50),
-    address varchar(50),
+    restaurant_address varchar(50),
     zipcode varchar(20),
     city varchar(50),
     link varchar(255),
     restaurant_desc varchar(255),
     rating float,
-    primary key (id)
-);
-
-insert into restaurants values (0, "OmNam", "Annankatu 29", 
-"00100", "Helsinki", "http://omnam.fi/",
-"Vegaanista ruokaa rakkaudella", null);
-    
-create table reviews(
-	id int NOT NULL AUTO_INCREMENT,
-    restaurant_id int,
-    stars int,
-    review varchar(255),
-    primary key (id),
-    foreign key (restaurant_id) references restaurants(id)
-);
-
-insert into reviews values(0, 1, 5, "Mahtavaa ruokaa");
-insert into reviews values(1, 1, 2, "Aika pahaa lol");
-
-create table opening_hours(
-	id int NOT NULL AUTO_INCREMENT,
-	restaurant_id int,
     monday varchar(25),
     tuesday varchar(25),
     wednesday varchar(25),
@@ -40,12 +18,42 @@ create table opening_hours(
     friday varchar(25),
     saturday varchar(25),
     sunday varchar(25),
-	primary key (id),
+    primary key (id)
+);
+
+insert into restaurants values (0, "OmNam", "Annankatu 29", 
+"00100", "Helsinki", "http://omnam.fi/",
+"Vegaanista ruokaa rakkaudella", null, "1100-1500", "1100-1500",
+ "1100-1500,1700-2200","1100-1500,1700-2200","1100-1500,1700-2200","1200-2200", null);
+
+insert into restaurants values (0, "Soi Soi", "Vaasankatu 9", 
+"00500", "Helsinki", "http://soisoi.fi/",
+"Herkullista kasvisruokaa pikaisesti", null, "1100-2300", "1100-2300", "1100-2300",
+ "1100-2300","11-2300","1100-2300","1300-2100");
+
+ insert into restaurants values (0, "Roots", "Eurantie 8", 
+"00550", "Helsinki", "http://rootshki.fi/",
+"Nothing tastes as good as vegan feels", null, "0800-1830", "1100-2300", "1100-2300",
+ "1100-2300","1100-2300","1100-2300","1300-2100");
+
+ insert into restaurants values (0, "Levant", "Bulevardi 15", 
+"00120", "Helsinki", "http://levant.fi/",
+"Maistuvaa, helppoa ja edullista kasvisruokaa iloisella palvelulla"
+, null, "1100-2000", "1100-2000", "1100-2000",
+ "1100-2000","1100-2100","1100-2100",null);
+
+    
+create table reviews(
+	id int NOT NULL AUTO_INCREMENT,
+    restaurant_id int,
+    stars int,
+    review varchar(255),
+    userName varchar(25),
+    primary key (id),
     foreign key (restaurant_id) references restaurants(id)
 );
 
-insert into opening_hours values(0, 1, "11-15", "11-15",
- "11-15,17-22","11-15,17-22","11-15,17-22","12-22",null
-);
+insert into reviews values(null, 1, 5, "Mahtavaa ruokaa","Mirjami");
+insert into reviews values(null, 1, 2, "Aika pahaa lol","Karen-Ann");
 
 
