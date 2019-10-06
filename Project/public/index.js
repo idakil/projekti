@@ -1,10 +1,10 @@
 let socket = io();
 let restaurantArr = [];
 
-
-
-
-
+socket.on("success", success)
+function success(d){
+    document.getElementById("success").innerHTML = "Ravintola lisätty tietokantaan onnistuneesti!";
+}
 
 fetch("/restaurants")
     .then(r => r.json())
