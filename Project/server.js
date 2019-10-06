@@ -69,18 +69,19 @@ app.post('/addRestaurant', urlencodedParser, function (req, res) {
   let q = "select restaurant_name, restaurant_address from restaurants where restaurant_name='" + response.restaurant_name + "' AND  restaurant_address= '" + response.restaurant_address +"'" ;
   mc.query(q, function (err, result) {
     if (err) throw err;
-    if(result.length > 0){
-      console.log("ei toimi oikein")
+    if(result.length == 0){
+      let sql = "INSERT INTO restaurants set ?";
+      mc.query(sql, response, function (err, result) {
+        if (err) throw err;
+        if(result.affectedRows > 0){
+          io.emit("success", "success")
+        }
+      });
+    }else{
+      io.emit("success", "no success")
     }
   })
 
-  let sql = "INSERT INTO restaurants set ?";
-  mc.query(sql, response, function (err, result) {
-    if (err) throw err;
-    if(result.affectedRows > 0){
-      io.emit("success", "success")
-    }
-  });
 })
 
 
