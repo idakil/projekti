@@ -17,12 +17,6 @@ fetch("/restaurants")
     });
 
 function handleRestaurants(d) {
-    console.log(d);
-    restaurants = [];
-    for(let i = 0; i < d.length; i++) {
-        restaurants[i] = d[i];
-        
-    }
     for (let i = 0; i < d.length; i++) {
         var div = document.createElement('div')
         div.className="restaurant_listing"
