@@ -16,7 +16,7 @@ const mc = mysql.createConnection({
   //port: '3308'
 
 }); 
-
+let counter = 0
 
 mc.connect();
 
@@ -32,6 +32,7 @@ let io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
   console.log('A user connected');
+  counter++;
   socket.on('disconnect', function () {
     console.log('A user disconnected');
   });
