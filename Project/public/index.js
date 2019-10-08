@@ -40,10 +40,7 @@ function handleRestaurants(d) {
         id.innerHTML = d[i].id;
         id.className="hidden";
         id.id = i+"_hiddenid";
-        div.appendChild(name)
-        div.appendChild(desc)
-        div.appendChild(address)
-        div.appendChild(id)
+        div.append(name, desc, address, id)
         document.body.appendChild(div)
     }
 
