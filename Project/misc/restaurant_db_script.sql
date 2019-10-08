@@ -50,6 +50,9 @@ insert into restaurants values (0, "Bun2Bun", "Hermannin rantatie 5",
 "00580", "Helsinki", "http://bun2bunburgers.com/",
 "Burgeri mut parempi", null, "1030-2100", "1030-2100", "1030-2100", "1030-2100", "1030-2100", "1030-1900", "1200-1800");
 
+insert into restaurants values (0, "Kippo", "Mannerheimintie 14",
+"00100", "Helsinki", "http://kippohelsinki.com/",
+"Plants are good", null, "0800-2000", "0800-2000", "0800-2000", "0800-2000", "0800-2000", "1100-1900", "1200-1800");
 
 create table reviews(
 	id int NOT NULL AUTO_INCREMENT,
