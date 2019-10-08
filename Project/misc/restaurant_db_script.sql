@@ -43,7 +43,7 @@ insert into restaurants values (0, "Soi Soi", "Vaasankatu 9",
  "1100-2000","1100-2100","1100-2100",null);
 
 insert into restaurants values (0, "Bun2Bun", "Urho Kekkosen katu 1",
-"00101", "Helsinki", "http://bun2bunburgers.com/",
+"00100", "Helsinki", "http://bun2bunburgers.com/",
 "Burgeri mut parempi", null, "1000-2100", "1000-2100", "1000-2100", "1000-2100", "1000-2100", "1000-2200", "1200-1900");
 
 insert into restaurants values (0, "Bun2Bun", "Hermannin rantatie 5",

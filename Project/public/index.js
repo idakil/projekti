@@ -39,7 +39,7 @@ function handleRestaurants(d) {
         address.innerHTML = d[i].restaurant_address;
         id.innerHTML = d[i].id;
         id.className="hidden";
-        id.id = i+"_hiddenid"
+        id.id = i+"_hiddenid";
         div.appendChild(name)
         div.appendChild(desc)
         div.appendChild(address)
