@@ -5,21 +5,17 @@ let restaurant;
 socket.on("reviewSuccess", reviewSuccess)
 
 function reviewSuccess (data) {
-    console.log(data)
     if(data === "success"){
-        document.getElementById("successImage").style.display = "block"; 
-    }else{
-
+        document.getElementById("saveButton").innerHTML = "Success"
     }
 }
 
 var myRating = raterJs({
     element: document.querySelector("#rater"),
     max: 5,
-    starSize: 50,
+    starSize: 25,
     rateCallback: function rateCallback(rating, done) {
         this.setRating(rating);
-        sendRating();
         done();
     }
 });
@@ -70,14 +66,38 @@ function getRestaurant(d) {
 function fillRestaurantInfo(d) {
     restaurant = d[0];
     document.getElementById("restaurantName").innerHTML = restaurant.restaurant_name;
-    let opening_hours  = document.getElementsByClassName("opening");
-    opening_hours[0].innerHTML = restaurant.monday;
-    opening_hours[1].innerHTML = restaurant.tuesday;
+    document.getElementById("desc").innerHTML = restaurant.restaurant_desc;
+    document.getElementById("link").href = restaurant.link;
+    document.getElementById("link").innerHTML = restaurant.link;
 
+    addOpeningHours(restaurant)
+    addContactInfo(restaurant)
     if (restaurant.rating != null) {
         restaurantRating.setRating(restaurant.rating);
     }
     //loadMap(restaurant);
+}
+
+function addContactInfo(restaurant){
+    document.getElementById("contactInfo").innerHTML = restaurant.restaurant_address;
+
+}
+
+function addOpeningHours(restaurant){
+    let opening_hours  = document.getElementsByClassName("opening");
+    opening_hours[0].innerHTML = restaurant.monday;
+    opening_hours[1].innerHTML = restaurant.tuesday;
+    opening_hours[2].innerHTML = restaurant.wednesday;
+    opening_hours[3].innerHTML = restaurant.thursday;
+    opening_hours[4].innerHTML = restaurant.friday;
+    opening_hours[5].innerHTML = restaurant.saturday;
+    opening_hours[6].innerHTML = restaurant.sunday;
+    
+    for (let i = 0; i < opening_hours.length; i++) {
+        if(opening_hours[i].innerHTML == ""){
+            opening_hours[i].innerHTML = "Suljettu"
+        }
+    }
 }
 
 function loadMap(restaurant) {
@@ -100,7 +120,8 @@ function showMap(coord) {
         container: 'map', // container id
         style: 'mapbox://styles/mapbox/streets-v11',
         center: coord, // starting position
-        zoom: 15 // starting zoom
+        zoom: 15,
+        zoomControl: true
     });
 
     map.addControl(new mapboxgl.GeolocateControl({
@@ -109,6 +130,7 @@ function showMap(coord) {
         },
         trackUserLocation: true
     }));
+    map.addControl(new mapboxgl.NavigationControl());
 
     let myLatlng = new mapboxgl.LngLat(coord[0], coord[1]);
     let marker = new mapboxgl.Marker()

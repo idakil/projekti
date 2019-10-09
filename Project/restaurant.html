@@ -42,59 +42,72 @@
             </div>
         </div>
 
-        <div id="headerWrapper">
-            <div id="restaurantName">nimi</div>
-            <div id="starDiv">
-                <div id="rater2"> </div>
-            </div>
-        </div>
-        <div id="kaikkiinformaatio">
-            <div id="infoWrapper">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td class="weekDay">Maanantai</td>
-                            <td class="opening"></td>
-                        </tr>
-                        <tr>
-                            <td class="weekDay">Tiistai</td>
-                            <td class="opening"></td>
-                        </tr>
-                        <tr>
-                            <td class="weekDay">Keskiviikko</td>
-                            <td class="opening"></td>
-                        </tr>
-                        <tr>
-                            <td class="weekDay">Torstai</td>
-                            <td class="opening"></td>
-                        </tr>
-                        <tr>
-                            <td class="weekDay">Perjantai</td>
-                            <td class="opening"></td>
-                        </tr>
-                        <tr>
-                            <td class="weekDay">Lauantai</td>
-                            <td class="opening"></td>
-                        </tr>
-                        <tr>
-                            <td class="weekDay">Sunnuntai</td>
-                            <td class="opening"></td>
-                        </tr>
+        <div id="contentWrapper">
 
-                    </tbody>
-                </table>
-            </div>
-            <div id="mapWrapper">
-                <div id="map"></div>
-            </div>
-        </div>
-        <div id="reviewWrapper">
-            <input id="userField">
-            <textarea id="reviewField"></textarea>
-            <div id="rater"></div>
-            <img src="/images/success.png" alt="success" id="successImage">
-        </div>
 
+            <div id="headerWrapper">
+                <div id="restaurantName">nimi</div>
+                <div id="starDiv">
+                    <div id="rater2"> </div>
+                </div>
+            </div>
+            <div id="kaikkiinformaatio">
+                <div id="infoWrapper">
+                    <div id="desc"></div>
+                    <a id="link"></a>
+                    <div id="contactInfo"></div>
+                    <table id="openingHoursTable">
+                        <tbody>
+                            <tr>
+                                <td class="weekDay">Maanantai</td>
+                                <td class="opening"></td>
+                            </tr>
+                            <tr>
+                                <td class="weekDay">Tiistai</td>
+                                <td class="opening"></td>
+                            </tr>
+                            <tr>
+                                <td class="weekDay">Keskiviikko</td>
+                                <td class="opening"></td>
+                            </tr>
+                            <tr>
+                                <td class="weekDay">Torstai</td>
+                                <td class="opening"></td>
+                            </tr>
+                            <tr>
+                                <td class="weekDay">Perjantai</td>
+                                <td class="opening"></td>
+                            </tr>
+                            <tr>
+                                <td class="weekDay">Lauantai</td>
+                                <td class="opening"></td>
+                            </tr>
+                            <tr>
+                                <td class="weekDay">Sunnuntai</td>
+                                <td class="opening"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="mapWrapper">
+                    <div id="map"></div>
+                </div>
+
+            </div>
+            <div id="reviewWrapper">
+
+                <input class="inputField" placeholder="Käyttäjätunnus">
+                <textarea id="reviewField" placeholder="Arvostelu"></textarea>
+                <div>
+                    <div id="rater"></div>
+                </div>
+                <div>
+                    <button id="saveButton" onclick="sendRating()">Save</button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </body>
