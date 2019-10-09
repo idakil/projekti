@@ -7,6 +7,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
+    <script src="/rater-js/index.js"></script>
 
 </head>
 
@@ -43,13 +44,55 @@
 
         <div id="headerWrapper">
             <div id="restaurantName">nimi</div>
-            <div id="starDiv">tähet</div>
+            <div id="starDiv">
+                <div id="rater2"> </div>
+            </div>
         </div>
         <div id="kaikkiinformaatio">
-            <div id="infoWrapper">tässä on tämmoinen ravintola</div>
+            <div id="infoWrapper">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="weekDay">Maanantai</td>
+                            <td class="opening"></td>
+                        </tr>
+                        <tr>
+                            <td class="weekDay">Tiistai</td>
+                            <td class="opening"></td>
+                        </tr>
+                        <tr>
+                            <td class="weekDay">Keskiviikko</td>
+                            <td class="opening"></td>
+                        </tr>
+                        <tr>
+                            <td class="weekDay">Torstai</td>
+                            <td class="opening"></td>
+                        </tr>
+                        <tr>
+                            <td class="weekDay">Perjantai</td>
+                            <td class="opening"></td>
+                        </tr>
+                        <tr>
+                            <td class="weekDay">Lauantai</td>
+                            <td class="opening"></td>
+                        </tr>
+                        <tr>
+                            <td class="weekDay">Sunnuntai</td>
+                            <td class="opening"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
             <div id="mapWrapper">
                 <div id="map"></div>
             </div>
+        </div>
+        <div id="reviewWrapper">
+            <input id="userField">
+            <textarea id="reviewField"></textarea>
+            <div id="rater"></div>
+            <img src="/images/success.png" alt="success" id="successImage">
         </div>
 
     </div>
