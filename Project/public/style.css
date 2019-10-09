@@ -71,15 +71,27 @@ nav ul li a:hover {
 .restaurant_listing {
     width: 300px;
     border: 1px solid black;
-    padding: 5px;
-    display: inline-block;
+    height: 200px;
+    padding: 10px;
+    
     cursor: pointer;
+    margin: 15px 7px;
+    
+}
+.restaurant_listing_row{
+    
+    display: flex;
+}
+#frontpage_listings_wrapper {
+    
+    margin: 0 auto;
 
 }
 
 #frontpage_listings {
-    
     text-align: center;
+    
+   
     
 }
 
@@ -92,7 +104,8 @@ nav ul li a:hover {
 
 
 #content-wrapper {
-   
+   width: 82%;
+   margin: 0 auto;
 }
 
 #map {
