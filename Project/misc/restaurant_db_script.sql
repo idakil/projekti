@@ -29,7 +29,7 @@ insert into restaurants values (0, "OmNam", "Annankatu 29",
 insert into restaurants values (0, "Soi Soi", "Vaasankatu 9", 
 "00500", "Helsinki", "http://soisoi.fi/",
 "Herkullista kasvisruokaa pikaisesti", null, "1100-2300", "1100-2300", "1100-2300",
- "1100-2300","11-2300","1100-2300","1300-2100");
+ "1100-2300","1100-2300","1100-2300","1300-2100");
 
  insert into restaurants values (0, "Roots", "Eurantie 8", 
 "00550", "Helsinki", "http://rootshki.fi/",
@@ -53,6 +53,14 @@ insert into restaurants values (0, "Bun2Bun", "Hermannin rantatie 5",
 insert into restaurants values (0, "Kippo", "Mannerheimintie 14",
 "00100", "Helsinki", "http://kippohelsinki.com/",
 "Plants are good", null, "0800-2000", "0800-2000", "0800-2000", "0800-2000", "0800-2000", "1100-1900", "1200-1800");
+
+insert into restaurants values (0, "Magu", "Sturenkatu 36",
+"00550", "Helsinki", "http://www.maguhelsinki.fi/",
+"Magu means taste.", null, null, null, "1700-2200", "1700-2200", "1700-0000", "1700-0000", null);
+
+insert into restaurants values (0, "Loving hut", "Kolmas Linja 17",
+"00530", "Helsinki", "https://www.facebook.com/lovinghuthelsinki/",
+"Tervetuloa", null, "1100-1800", "1100-1800", "1100-1800", "1100-1800", "1100-1800", "1200-1800", "1200-1800");
 
 create table reviews(
 	id int NOT NULL AUTO_INCREMENT,
