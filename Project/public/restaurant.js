@@ -1,5 +1,49 @@
+let socket = io();
 
 let restaurant;
+
+socket.on("reviewSuccess", reviewSuccess)
+
+function reviewSuccess (data) {
+    console.log(data)
+    if(data === "success"){
+        document.getElementById("successImage").style.display = "block"; 
+    }else{
+
+    }
+}
+
+var myRating = raterJs({
+    element: document.querySelector("#rater"),
+    max: 5,
+    starSize: 50,
+    rateCallback: function rateCallback(rating, done) {
+        this.setRating(rating);
+        sendRating();
+        done();
+    }
+});
+
+let restaurantRating = raterJs({
+    element: document.querySelector("#rater2"),
+    max: 5,
+    readOnly: true,
+    starSize: 16,
+})
+
+function sendRating(){
+    let starRating = myRating.getRating();
+    let reviewText = document.getElementById("reviewField").value;
+    let user = document.getElementById("userField").value;
+    reviewObject = {
+        id: null,
+        restaurant_id: restaurant.id,
+        stars: starRating,
+        review: reviewText,
+        userName: user
+    }
+    socket.emit("review", reviewObject)
+}
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -14,11 +58,8 @@ function getParameterByName(name, url) {
 var dynamicContent = getParameterByName('id');
 getRestaurant(dynamicContent);
 
-
 function getRestaurant(d) {
     var url = '/restaurant/' + d;
-    console.log(url);
-
     fetch(url)
         .then(r => r.json())
         .then(function (data) {
@@ -27,9 +68,16 @@ function getRestaurant(d) {
 }
 
 function fillRestaurantInfo(d) {
-    document.getElementById("restaurantName").innerHTML = d[0].restaurant_name;
     restaurant = d[0];
-    loadMap(restaurant)
+    document.getElementById("restaurantName").innerHTML = restaurant.restaurant_name;
+    let opening_hours  = document.getElementsByClassName("opening");
+    opening_hours[0].innerHTML = restaurant.monday;
+    opening_hours[1].innerHTML = restaurant.tuesday;
+
+    if (restaurant.rating != null) {
+        restaurantRating.setRating(restaurant.rating);
+    }
+    //loadMap(restaurant);
 }
 
 function loadMap(restaurant) {
@@ -47,7 +95,7 @@ function loadMap(restaurant) {
         });
 }
 
-function showMap(coord){
+function showMap(coord) {
     let map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -64,7 +112,8 @@ function showMap(coord){
 
     let myLatlng = new mapboxgl.LngLat(coord[0], coord[1]);
     let marker = new mapboxgl.Marker()
-    .setLngLat(myLatlng)
-    .addTo(map);
+        .setLngLat(myLatlng)
+        .addTo(map);
 }
+
 
