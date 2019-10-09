@@ -2,41 +2,42 @@
 <html>
 
 <head>
-    <title>Page Title</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>Vegaaniravintoloita lähelläsi</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="images/RESTAURANTLOGO.png" />
 </head>
 
 <body>
-
     <div class="nav">
         <div class="nav_wrapper">
             <nav>
                 <ul>
-                    <li>LOGO</li>
-                    <li>
-                        ÄKSDEE
-                        
-                    </li>
-                    <li>ADD A RESTAURANT</li>
-                    <li>CONTact</li>
+                    <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
+                    <li><a href=newRestaurant.html>lisää ravintola</a></li>
+                    <li><a href=info.html>info</a></li>
                     <li></li>
                 </ul>
             </nav>
         </div>
     </div>
 
+    <div id="searchbar">
+        <input type="text" placeholder="Search.." id="searchfield">
+    </div>
+
     <div id='content-wrapper'>
-        <div id="frontpage_listings">
+        <div id="frontpage_listings_wrapper">
+            <div id="frontpage_listings">
+            </div>
         </div>
     </div>
-    
 
 
-<script src="index.js"></script>
+
+    <script src="index.js"></script>
 
 
 </body>
 
 </html>
-

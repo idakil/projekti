@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Vegaaniravintoloita lähelläsi</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
@@ -25,18 +25,12 @@
             <div class="nav_wrapper">
                 <nav>
                     <ul>
-                        <li><a href="Index.html">Front Page</a></li>
-                        <li>
-                            <a href="#">devs</a>
-                            <ul>
-                                <li><a href="Erkka.html">erkka</a></li>
-                                <li><a href="Liisa.html">liisa</a></li>
-                                <li><a href="Mikko.html">mikko</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="Game">game</a></li>
-                        <li><a href="Info">info</a></li>
-                        <li><a href="Download">download</a></li>
+                        <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
+
+
+                        <li><a href=newRestaurant.html>lisää ravintola</a></li>
+                        <li><a href=info.html>info</a></li>
+                        <li></li>
                     </ul>
                 </nav>
             </div>
@@ -53,9 +47,12 @@
             </div>
             <div id="kaikkiinformaatio">
                 <div id="infoWrapper">
-                    <div id="desc"></div>
-                    <a id="link"></a>
-                    <div id="contactInfo"></div>
+                    
+                        <div id="desc"></div>
+                        <div > <a id="link"></a></div>
+                        <div id="contactInfo"></div>
+                    
+
                     <table id="openingHoursTable">
                         <tbody>
                             <tr>

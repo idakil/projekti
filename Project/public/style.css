@@ -1,12 +1,41 @@
 body {
     padding: 0;
     margin: 0;
-
+    font-family: 'Bahnschrift Condensed';
 }
 
+#searchfield {
+    width: 80%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgb(65, 130, 140);
+}
 
+#logoimg {
+    height: 60px;
+    width: 65px;
+    margin-top: 5px;
+}
+
+#searchfield:focus {
+    outline-width: 0;
+}
+#searchbar {
+    width: 80%;
+    margin: 0 auto;
+    
+}
+a {
+    text-decoration: none;
+    
+    font-size:70px;
+    color: rgb(230, 230, 230);
+    padding-left: 50px;
+}
 .nav {
-    background-color: aqua;
+    background-color: rgb(65, 130, 140);
+    height: 70px;
     width: 100%;
     padding: 0% 0% 0% 0%;
 }
@@ -15,7 +44,7 @@ body {
     
     margin: 0;
     
-    text-align: center;
+    text-align: left;
     
 }
 
@@ -61,25 +90,37 @@ nav ul li a:hover {
     padding: 0 59.75px;
 }
 .nav ul ul li a:hover {
-        background-color: rgba(0,0,0,0.3);
-        transition: background-color ease 0.3s;
-        text-align: left;
-        width: inherit;
+    background-color: rgba(0,0,0,0.3);
+    transition: background-color ease 0.3s;
+    text-align: left;
+    width: inherit;
 }
 
 
 .restaurant_listing {
     width: 300px;
-    border: 1px solid black;
-    padding: 5px;
-    display: inline-block;
+    border: 1px solid rgb(171, 168, 161,0.8);
+    border-radius: 15px;
+    height: 200px;
+    padding: 10px;
     cursor: pointer;
+    margin: 15px 7px;
+    
+}
+.restaurant_listing_row{
+    
+    display: flex;
+}
+#frontpage_listings_wrapper {
+    
+    margin: 0 auto;
 
 }
 
 #frontpage_listings {
-    
     text-align: center;
+    
+   
     
 }
 
@@ -91,12 +132,13 @@ nav ul li a:hover {
 }
 
 
-#contentWrapper {
-   text-align: center;
+#content-wrapper {
+   width: 82%;
+   margin: 0 auto;
 }
 
 #map {
-    height: 500px;
+    height: 400px;
     width: 100%;
     border: 1px solid rgb(65, 130, 140);
     border-radius: 15px;
@@ -107,16 +149,18 @@ nav ul li a:hover {
     text-align: center;
     margin: 0 auto;
     display: flex;
+    font-size: 1.2em;
 }
 #mapWrapper{
     width: 50%;
     display: inline-block;
- 
+    margin-bottom: 10px;
 }
 #infoWrapper{
     width: 50%;
     display: inline-block;
     text-align: center;
+    justify-content: center;
 }
 #headerWrapper{
     width: 100%;
@@ -129,9 +173,31 @@ nav ul li a:hover {
     border-radius: 15px;
     width: 60%;
     margin: 0 auto;
+    text-align: center;
 }
 
+#formDiv{
+    width: 60%;
+    margin: 0 auto;
+
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(65, 130, 140);
+    border-radius: 15px;
+    box-sizing: border-box;
+  }
+
 .inputField{
+    display: inline-block;
+
     width: 60%;
     padding:10px;
     margin: 10px;
@@ -206,18 +272,38 @@ textarea{
     height: 40px;
     border-radius: 15px;
     background-color: rgb(65, 130, 140);
+  }
+
+  button:hover{
+    width: 40%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #222;
 }
 
   #openingHoursTable{
     border: 1px solid rgb(65, 130, 140);
     border-radius: 15px;
-    border-collapse: collapse;
+    margin-top: 10px;
+    align-self: center;
   }
-
 
   td{
       text-align: left;
+      padding: 10px;
   }
+ 
   #restaurantName{
       font-size: 2em;
   }
+  .restaurant_image {
+    height: 90px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+#link{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}

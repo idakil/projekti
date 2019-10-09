@@ -1,38 +1,66 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Vegaaniravintoloita lähelläsi</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
 
-    <iframe name="hiddenFrame" style="display: none;"></iframe>
-    <form action="/addRestaurant" method="POST" target="hiddenFrame">
-        
-    <div><label>Ravintolan nimi: </label><input class="inputField" type="text" name="name"></div>
-        <fieldset>
-            <div><label>Osoite: </label><input class="inputField" type="text" name="address"></div>
-            <div><label>Postinumero: </label><input class="inputField" type="text" name="zip"></div>
-            <div><label>Kaupunki: </label> <input class="inputField" type="text" name="city"></div>
-        </fieldset>
-        <fieldset>
-            <div><label>Verkkosivu: </label><input class="inputField" type="text" name="site"></div>
-            <div> <label>Kuvaus: </label> <input class="inputField" type="text" name="desc"></div>
-        </fieldset>
-        <fieldset>
-            <div><label>Maanantai: </label><input class="inputField" type="text" name="mon" placeholder="0800-1600"></div>
-            <div><label>Tiistai: </label><input class="inputField" type="text" name="tue" placeholder="0800-1600"></div>
-            <div><label>Keskiviikko: </label><input class="inputField" type="text" name="wed" placeholder="0800-1600"></div>
-            <div><label>Torstai: </label><input class="inputField" type="text" name="thur" placeholder="0800-1600"></div>
-            <div><label>Perjantai: </label><input class="inputField" type="text" name="fri" placeholder="0800-1600"></div>
-            <div><label>Lauantai: </label><input class="inputField" type="text" name="sat" placeholder="0800-1600"></div>
-            <div><label>Sunnuntai: </label> <input class="inputField" type="text" name="sun" placeholder="0800-1600"></div>
-        </fieldset>
+    <div class="nav">
+        <div class="nav_wrapper">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
+                    <li><a href=newRestaurant.html>lisää ravintola</a></li>
+                    <li><a href=info.html>info</a></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-        <input class="inputField" type="submit" value="Submit">
-    </form>
+    <iframe name="hiddenFrame" style="display: none;"></iframe>
+    <div id="formDiv">
+
+        <form action="/addRestaurant" method="POST" target="hiddenFrame">
+
+            <fieldset>
+                <div><label>Ravintolan nimi: </label><input class="inputField" type="text" name="name"></div>
+
+            </fieldset>
+            <fieldset>
+                <div><label>Osoite: </label><input class="inputField" type="text" name="address"></div>
+                <div><label>Postinumero: </label><input class="inputField" type="text" name="zip"><label>Kaupunki: </label> <input class="inputField" type="text" name="city"></div>
+
+            </fieldset>
+            <fieldset>
+                <div><label>Verkkosivu: </label><input class="inputField" type="text" name="site"></div>
+                <div> <label>Kuvaus: </label> <input class="inputField" type="text" name="desc"></div>
+            </fieldset>
+            <fieldset>
+                <div><label>Maanantai: </label><input class="inputField" type="text" name="mon" placeholder="0800-1600">
+                </div>
+                <div><label>Tiistai: </label><input class="inputField" type="text" name="tue" placeholder="0800-1600">
+                </div>
+                <div><label>Keskiviikko: </label><input class="inputField" type="text" name="wed"
+                        placeholder="0800-1600">
+                </div>
+                <div><label>Torstai: </label><input class="inputField" type="text" name="thur" placeholder="0800-1600">
+                </div>
+                <div><label>Perjantai: </label><input class="inputField" type="text" name="fri" placeholder="0800-1600">
+                </div>
+                <div><label>Lauantai: </label><input class="inputField" type="text" name="sat" placeholder="0800-1600">
+                </div>
+                <div><label>Sunnuntai: </label> <input class="inputField" type="text" name="sun"
+                        placeholder="0800-1600">
+                </div>
+            </fieldset>
+
+            <input class="inputField" type="submit" value="Submit">
+        </form>
+    </div>
     <div id="success"></div>
 
 </body>

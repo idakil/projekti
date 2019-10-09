@@ -75,7 +75,7 @@ function fillRestaurantInfo(d) {
     if (restaurant.rating != null) {
         restaurantRating.setRating(restaurant.rating);
     }
-    //loadMap(restaurant);
+    loadMap(restaurant);
 }
 
 function addContactInfo(restaurant){
