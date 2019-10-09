@@ -10,11 +10,17 @@ function success(d) {
     }
 }
 
+
+let search = document.getElementById('searchfield');
+search.addEventListener('keyup', handleSearch);
+
 fetch("/restaurants")
     .then(r => r.json())
     .then(function (d) {
         handleRestaurants(d);
     });
+
+
 
 function handleRestaurants(d) {
     restaurantArr = d;
@@ -60,7 +66,7 @@ function handleRestaurants(d) {
     let images = document.getElementsByClassName('restaurant_image');
 
     for (let i = 0; i < images.length; i++) {
-        images[i].src = "https://picsum.photos/200/90?random=" + i;
+        images[i].src = "https://picsum.photos/280/140?random=" + i;
     }
     
 
@@ -75,13 +81,54 @@ function handleRestaurants(d) {
         document.getElementById(d[i].id + "_hours").innerHTML = checkIfOpen(d[i]);
         classname[i].addEventListener('click', function(e) {
             location.href = "/restaurant?id="+this.getElementsByClassName("hidden")[0].textContent;
-            console.log(this.getElementsByClassName("hidden")[0].textContent);
-            
         });
     }
 
 }
 
+
+function handleSearch() {
+    let str = document.getElementById('searchfield').value;
+    let datalist = document.getElementById("results");
+
+    let results = [];
+    while(datalist.firstChild){
+        datalist.removeChild(datalist.firstChild)
+    }
+    for(let i = 0; i < restaurantArr.length; i++) {
+        if(_isContains(restaurantArr[i], str)) {
+            results.push(restaurantArr[i]);
+ 
+        }
+    }
+    for (let j = 0; j < results.length; j++) {
+        console.log(results)
+        let r = results[j].restaurant_name+ ", " + results[j].restaurant_address; 
+        let o = document.createElement("option");
+        o.setAttribute("value", r)
+        datalist.appendChild(o);
+    }
+
+    
+}
+
+function _isContains(json, value) {
+    //console.log(json);
+    let contains = false;
+    //let obj = JSON.parse(json);
+    let values = Object.values(json);
+    for (let i = 0; i < values.length; i++) {
+        if (typeof values[i] == 'string') {
+            let str = values[i].toLowerCase();
+            values[i] = str;
+            
+            if (values[i].includes(value)) {
+                return true;
+            }
+        }
+    }
+    return false;
+ }
 
 
 function checkIfOpen(restaurant) {
@@ -92,9 +139,9 @@ function checkIfOpen(restaurant) {
 
     let element = document.getElementById(elementString);
     let str = restaurant[weekDays[weekDay]].split("-");
-    console.log(str.length);
+    
     //if (str.length < 3) {
-        console.log("elopl");
+        
         if (str[1] == (date.getHours()-1) * 100) {
             element.style.color = 'yellow';
             return 'sulkeutuu pian';
