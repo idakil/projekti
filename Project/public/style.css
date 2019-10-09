@@ -1,12 +1,41 @@
 body {
     padding: 0;
     margin: 0;
-
+    font-family: 'Bahnschrift Condensed';
 }
 
+#searchfield {
+    width: 80%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgb(65, 130, 140);
+}
 
+#logoimg {
+    height: 60px;
+    width: 65px;
+    margin-top: 5px;
+}
+
+#searchfield:focus {
+    outline-width: 0;
+}
+#searchbar {
+    width: 80%;
+    margin: 0 auto;
+    
+}
+a {
+    text-decoration: none;
+    
+    font-size:70px;
+    color: rgb(230, 230, 230);
+    padding-left: 50px;
+}
 .nav {
-    background-color: aqua;
+    background-color: rgb(65, 130, 140);
+    height: 70px;
     width: 100%;
     padding: 0% 0% 0% 0%;
 }
@@ -15,7 +44,7 @@ body {
     
     margin: 0;
     
-    text-align: center;
+    text-align: left;
     
 }
 
@@ -61,19 +90,19 @@ nav ul li a:hover {
     padding: 0 59.75px;
 }
 .nav ul ul li a:hover {
-        background-color: rgba(0,0,0,0.3);
-        transition: background-color ease 0.3s;
-        text-align: left;
-        width: inherit;
+    background-color: rgba(0,0,0,0.3);
+    transition: background-color ease 0.3s;
+    text-align: left;
+    width: inherit;
 }
 
 
 .restaurant_listing {
     width: 300px;
-    border: 1px solid black;
+    border: 1px solid rgb(171, 168, 161,0.8);
+    border-radius: 15px;
     height: 200px;
     padding: 10px;
-    
     cursor: pointer;
     margin: 15px 7px;
     
@@ -190,4 +219,10 @@ textarea{
       display: none;
       height: 20px;
       width: 20px;
+  }
+
+  .restaurant_image {
+      height: 90px;
+      width: 200px;
+      border: 1px solid black;
   }

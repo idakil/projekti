@@ -17,6 +17,7 @@ fetch("/restaurants")
     });
 
 function handleRestaurants(d) {
+    restaurantArr = d;
     let rowDivArr = [];
     let rowDiv;
     for (let i = 0; i < d.length; i++) {
@@ -32,6 +33,9 @@ function handleRestaurants(d) {
         let address = document.createElement('div')
         let id = document.createElement('div');
         let opening_hours = document.createElement('div');
+        let image = document.createElement('img');
+        image.className = "restaurant_image";
+        
         opening_hours.id = d[i].id + "_hours"
         opening_hours.innerHTML = 'elo pl'
         name.innerHTML = d[i].restaurant_name;
@@ -41,7 +45,7 @@ function handleRestaurants(d) {
         id.innerHTML = d[i].id;
         id.className="hidden";
         id.id = i+"_hiddenid";
-        div.append(name, desc, address, id, opening_hours);
+        div.append(image, name, desc, address, id, opening_hours);
         
         if (i % 4 == 0 || i == 0) {
             console.log(i + "creating");
@@ -53,7 +57,11 @@ function handleRestaurants(d) {
         rowDiv.appendChild(div);
         //document.getElementById('frontpage_listings').appendChild(div);
     }
+    let images = document.getElementsByClassName('restaurant_image');
 
+    for (let i = 0; i < images.length; i++) {
+        images[i].src = "https://picsum.photos/200/90?random=" + i;
+    }
     
 
     for (let i = 0; i < rowDivArr.length; i++) {
@@ -80,15 +88,13 @@ function checkIfOpen(restaurant) {
     let weekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     let date = new Date();
     let weekDay = date.getDay();
-    //console.log(restaurant);
     elementString = restaurant.id + "_hours";
-    console.log(elementString);
+
     let element = document.getElementById(elementString);
     let str = restaurant[weekDays[weekDay]].split("-");
-    console.log(element);
-    console.log(restaurant.id);
-
-    //if (!str.length == 3) {
+    console.log(str.length);
+    //if (str.length < 3) {
+        console.log("elopl");
         if (str[1] == (date.getHours()-1) * 100) {
             element.style.color = 'yellow';
             return 'sulkeutuu pian';
