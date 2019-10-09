@@ -84,7 +84,7 @@ function reviewToDatabase(data) {
 }
 
 app.post('/addRestaurant', urlencodedParser, function (req, res) {
-  // Prepare output in JSON format
+
   response = {
     id: null,
     restaurant_name: req.body.name,
