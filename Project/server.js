@@ -160,7 +160,8 @@ app.get("/restaurant/:id", function (req, res) {
   })
 })
 
-app.get('/info', (req, res) => {
+function getInfo() {
+  console.log('kutsuttu')
   let query = "select * from restaurants"
   mc.query(query, function (err, result) {
     if (err) {
@@ -171,11 +172,12 @@ app.get('/info', (req, res) => {
         content: 'Restaurant has information for ' + result.length + ' restaurants',
         date: new Date(),
       }
-      res.send(info.content + '<br>' + info.date)
+      return (
+        (info.content + '<br>' + info.date)
+      )
     }
   })
-
-})
+}
 
 app.get('/ratings', sendRatings);
 
