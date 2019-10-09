@@ -29,9 +29,27 @@ body {
     margin: 0 auto;
     
 }
+table {
+    font-family: arial, sans-serif;
+    padding: 20px;
+    border-collapse: collapse;
+    width: 75%;
+}
+
+td,
+th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    background-color: #dddddd;
+    border:2px solid black;
+}
+
 #a {
     text-decoration: none;
-    
     font-size:70px;
     color: rgb(230, 230, 230);
     padding-left: 50px;

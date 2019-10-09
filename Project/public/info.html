@@ -1,17 +1,59 @@
 <html>
+
 <head>
-        <script type="text/javascript" src='/Project/server.js'> </script>
-<title>API information</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>API tiedot</title>
 </head>
 
-<h1>API Information</h1>
-<img SRC="images/restaurantpic.jpg" ALIGN="BOTTOM">
-<hr><a href="index.html">Go Back</a>
-to the home page
+<body>
+    <div class="nav">
+        <div class="nav_wrapper">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
+                    <li><a href="newRestaurant.html" id="a">lisää ravintola</a></li>
+                    <li><a href="info.html" id="a">info</a></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <h1>API Tiedot</h1>
+    <img SRC="images/restaurantpic.jpg" ALIGN="BOTTOM">
+    <hr><a href="index.html">Palaa takaisin kotisivulle</a>
 
-<h2></h2>
+    <p>
+        <b>Tämä avoin rajapinta tarjoaa tietoa Helsingin vegaaniravintoloista:</b>
+    </p>
+    <p>Käyttöliittymässä voit lisätä, poistaa, etsiä ja muokata</p>
+    <p>Alla olevia API-kutsuja voi vapaasti käyttää. Tiedot tulevat JSON-muodossa</p>
+    <table>
+        <tr>
+            <th>Kutsu</th>
+            <th>Tiedot</th>
+        </tr>
+        <tr>
+            <th>/restaurants</th>
+            <th>Hakee kaikki ravintolat</th>
+        </tr>
+        <tr>
+            <th>/restaurant/:id</th>
+            <th>Hakee ravintolaa id:n perusteella</th>
+        </tr>
+        <tr>
+            <th>/addRestaurant</th>
+            <th>Lisää ravintola</th>
+        </tr>
+        <tr>
+            <th>/info</th>
+            <th>Palauttaa ravintoloiden ja käyttöliittymän kävijöiden määrän sekä ajan</th>
+        </tr>
+        <tr>
+            <th>/ratings</th>
+            <th>Hakee arvostelut</th>
+        </tr>
 
-<p> 
-    <p> <b>Some information</b>
-    </body>
+</body>
+</table>
+
 </html>
