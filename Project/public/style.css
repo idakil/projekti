@@ -2,6 +2,9 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Bahnschrift Condensed';
+    text-align: center;
+    background-image: url('images/background.png');
+    background-attachment: fixed;
 }
 
 #searchfield {
@@ -9,7 +12,7 @@ body {
     margin: 10px;
     padding: 15px;
     border-radius: 15px;
-    border: 1px solid rgb(65, 130, 140);
+    border: 2px solid rgb(65, 130, 140);
 }
 
 #logoimg {
@@ -26,9 +29,27 @@ body {
     margin: 0 auto;
     
 }
-a {
+table {
+    font-family: arial, sans-serif;
+    padding: 20px;
+    border-collapse: collapse;
+    width: 75%;
+}
+
+td,
+th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    background-color: #dddddd;
+    border:2px solid black;
+}
+
+#a {
     text-decoration: none;
-    
     font-size:70px;
     color: rgb(230, 230, 230);
     padding-left: 50px;
@@ -99,9 +120,10 @@ nav ul li a:hover {
 
 .restaurant_listing {
     width: 300px;
-    border: 1px solid rgb(171, 168, 161,0.8);
+    border: 2px solid rgb(65, 130, 140);
+    background-color: rgb(230, 230, 230);
     border-radius: 15px;
-    height: 200px;
+    height: 260px;
     padding: 10px;
     cursor: pointer;
     margin: 15px 7px;
@@ -295,9 +317,10 @@ textarea{
       font-size: 2em;
   }
   .restaurant_image {
-    height: 90px;
-    width: 200px;
-    border: 1px solid black;
+      height: 160px;
+      width: 280px;
+      border: 1px solid black;
+  
 }
 
 #link{

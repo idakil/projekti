@@ -14,8 +14,8 @@
             <nav>
                 <ul>
                     <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
-                    <li><a href=newRestaurant.html>lisää ravintola</a></li>
-                    <li><a href=info.html>info</a></li>
+                    <li><a href="newRestaurant.html" id="a">lisää ravintola</a></li>
+                    <li><a href="info.html" id="a">info</a></li>
                     <li></li>
                 </ul>
             </nav>
@@ -23,7 +23,11 @@
     </div>
 
     <div id="searchbar">
-        <input type="text" placeholder="Search.." id="searchfield">
+            <input type="text" placeholder="Search.." id="searchfield" list="results">
+            <datalist id="results">
+
+            </datalist>
+    
     </div>
 
     <div id='content-wrapper'>

@@ -10,7 +10,7 @@ const router = express.Router();
 const mysql = require('mysql');
 const mc = mysql.createConnection({
   host: 'localhost',
-  user: 'username',
+  user: 'root',
   password: 'password',
   database: 'restaurant_db',
   //port: '3308'
@@ -160,7 +160,8 @@ app.get("/restaurant/:id", function (req, res) {
   })
 })
 
-app.get('/info', (req, res) => {
+app.get("/info", function (req, res) {
+  console.log('kutsuttu')
   let query = "select * from restaurants"
   mc.query(query, function (err, result) {
     if (err) {
@@ -168,13 +169,12 @@ app.get('/info', (req, res) => {
     }
     else {
       const info = {
-        content: 'Restaurant has information for ' + result.length + ' restaurants',
+        content: 'API has information for ' + result.length + ' restaurants',
         date: new Date(),
       }
-      res.send(info.content + '<br>' + info.date)
+      res.send(info.content + "<br>" + info.date + "<br>" + "API visitors since server start: "+counter)
     }
   })
-
 })
 
 app.get('/ratings', sendRatings);
