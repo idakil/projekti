@@ -34,6 +34,7 @@ io.on('connection', function (socket) {
   console.log('A user connected');
   counter++;
   socket.on('review', reviewToDatabase)
+  socket.on("deleteRestaurant", deleteRestaurant)
   socket.on('disconnect', function () {
     console.log('A user disconnected');
   });
@@ -134,18 +135,19 @@ function sendRestaurants(req, res) {
   })
 }
 
-app.delete("/restaurant/:id", function (req, res) {
-  let query = "delete from restaurants where id=" + req.params.id;
+function deleteRestaurant(req, res) {
+  let query = "delete from restaurants where id=" + req.id;
   mc.query(query, function (err, result) {
     if (err) {
-      //console.log("error ", err);
+      console.log("error ", err);
     }
     else {
       console.log(result);
-      res.send(result);
     }
   })
-})
+}
+
+  
 
 app.get("/restaurant/:id", function (req, res) {
   let query = "select * from restaurants where id=" + req.params.id;
@@ -155,7 +157,7 @@ app.get("/restaurant/:id", function (req, res) {
     }
     else {
       console.log(result);
-      res.send(result);
+      res.send(result)
     }
   })
 })

@@ -138,4 +138,17 @@ function showMap(coord) {
         .addTo(map);
 }
 
+function deleteRestaurant() {
+    if (restaurant !== undefined) {
+        var confirmation = confirm("Oletko varma?")
+        if (confirmation === true) {
+            socket.emit("deleteRestaurant", restaurant)
+            alert("Ravintola poistettu tietokannasta")
+        }  
+    }
+    else {
+        console.log('tyhjä')
+    }
+}
+
 
