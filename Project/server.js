@@ -10,7 +10,7 @@ const router = express.Router();
 const mysql = require('mysql');
 const mc = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
+  user: 'username',
   password: 'password',
   database: 'restaurant_db',
   //port: '3308'
@@ -67,6 +67,7 @@ function updateRating(id, rating) {
 }
 
 function reviewToDatabase(data) {
+  console.log(data)
   let sql = "INSERT INTO reviews set ?";
   mc.query(sql, data, function (err, result) {
     if (err) throw err;
@@ -115,12 +116,38 @@ app.post('/addRestaurant', urlencodedParser, function (req, res) {
         }
       });
     } else {
+
       io.emit("success", "no success")
     }
+    res.send(response);
   })
-
 })
 
+app.put("/api/restaurant/:id", function (req, res) {
+  response = {
+    id: null,
+    restaurant_name: req.body.name,
+    restaurant_address: req.body.address,
+    zipcode: req.body.zip,
+    city: req.body.city,
+    link: req.body.site,
+    restaurant_desc: req.body.desc,
+    rating: null,
+    monday: req.body.mon,
+    tuesday: req.body.tue,
+    wednesday: req.body.wed,
+    thursday: req.body.thur,
+    friday: req.body.fri,
+    saturday: req.body.sat,
+    sunday: req.body.sun
+  };
+
+  let q = "update restaurants set ? where id = '" + req.params.id + "'";
+  mc.query(q, response, function (err, result) {
+    if (err) throw err;
+    res.send(response)
+  })
+})
 
 function sendRestaurants(req, res) {
   let query = "select * from restaurants"
@@ -134,7 +161,7 @@ function sendRestaurants(req, res) {
   })
 }
 
-app.delete("/restaurant/:id", function (req, res) {
+app.delete("/api/restaurant/:id", function (req, res) {
   let query = "delete from restaurants where id=" + req.params.id;
   mc.query(query, function (err, result) {
     if (err) {
@@ -160,6 +187,19 @@ app.get("/restaurant/:id", function (req, res) {
   })
 })
 
+app.get("/api/restaurants/search/:searchBy/:param", function (req, res) {
+  let query = "select * from restaurants where ?=?";
+  let d = [req.params.searchBy, req.params.param];
+  let q = "select * from restaurants where " + req.params.searchBy + " = '" + req.params.param + "'";
+
+  mc.query(q, function (err, result) {
+    if (err) throw err;
+    else {
+      res.send(result);
+    }
+  })
+})
+
 app.get("/info", function (req, res) {
   console.log('kutsuttu')
   let query = "select * from restaurants"
@@ -172,7 +212,7 @@ app.get("/info", function (req, res) {
         content: 'API has information for ' + result.length + ' restaurants',
         date: new Date(),
       }
-      res.send(info.content + "<br>" + info.date + "<br>" + "API visitors since server start: "+counter)
+      res.send(info.content + "<br>" + info.date + "<br>" + "API visitors since server start: " + counter)
     }
   })
 })
@@ -198,3 +238,21 @@ function sendRatings(req, res) {
     }
   })
 }
+
+app.get("/api/reviews/all", function (req, res) {
+  let query = "select * from reviews"
+  mc.query(query, function (err, result) {
+    if (err) throw err;
+    res.send(result)
+  });
+})
+
+
+app.get("/api/reviews/search/:searchBy/:param", function (req, res) {
+  let query = "select * from reviews where " + req.params.searchBy + " = '" + req.params.param + "'";
+  mc.query(query, function (err, result) {
+    if (err) throw err;
+    res.send(result)
+  });
+})
+

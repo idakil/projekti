@@ -29,24 +29,7 @@ body {
     margin: 0 auto;
     
 }
-table {
-    font-family: arial, sans-serif;
-    padding: 20px;
-    border-collapse: collapse;
-    width: 75%;
-}
 
-td,
-th {
-    border: 1px solid black;
-    text-align: left;
-    padding: 8px;
-}
-
-tr {
-    background-color: #dddddd;
-    border:2px solid black;
-}
 
 #a {
     text-decoration: none;
@@ -302,10 +285,11 @@ textarea{
     background-color: #222;
 }
 
-  #openingHoursTable{
+  .openingHoursTable{
     border: 1px solid rgb(65, 130, 140);
     border-radius: 15px;
     margin-top: 10px;
+    background-color: rgb(230, 230, 230);
   }
 
   td{

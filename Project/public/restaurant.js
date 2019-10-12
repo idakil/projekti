@@ -39,6 +39,7 @@ function sendRating(){
         userName: user
     }
     socket.emit("review", reviewObject)
+    
 }
 
 function getParameterByName(name, url) {

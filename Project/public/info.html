@@ -27,32 +27,80 @@
     </p>
     <p>Käyttöliittymässä voit lisätä, poistaa, etsiä ja muokata</p>
     <p>Alla olevia API-kutsuja voi vapaasti käyttää. Tiedot tulevat JSON-muodossa</p>
-    <table>
+    <table class="openingHoursTable">
         <tr>
+            <th>Tyyppi</th>
             <th>Kutsu</th>
             <th>Tiedot</th>
+            <th colspan="2">Esimerkki</th>
         </tr>
         <tr>
-            <th>/restaurants</th>
-            <th>Hakee kaikki ravintolat</th>
+            <td>GET</td>
+            <td>/restaurants</td>
+            <td>Hakee kaikki ravintolat</td>
         </tr>
         <tr>
-            <th>/restaurant/:id</th>
-            <th>Hakee ravintolaa id:n perusteella</th>
+        <td>GET</td>
+        <td>/api/restaurants/search/:searchBy/:param</td>
+        <td>Hae ravintoloita valitsemasi parametrin perusteella</td>
+        <td>/api/restaurants/search/city/Helsinki</td>
+        <td>Palauttaa Helsingissä olevat ravintolat</td>
+    </tr>
+        <tr>
+            <td>GET</td>
+            <td>/restaurant/:id</td>
+            <td>Hakee ravintolaa id:n perusteella</td>
+            <td>/restaurant/1</td>
+            <td>Palauttaa ravintolan, jonka id on 1</td>
         </tr>
         <tr>
-            <th>/addRestaurant</th>
-            <th>Lisää ravintola</th>
+            <td>POST</td>
+            <td>/addRestaurant</td>
+            <td>Lisää ravintola</td>
+            <td colspan="2">{<br>
+                "id": null,<br>
+                "name": "Ravintola",<br>
+                "address": "ravintolan osoite",<br>
+                "zip": "ravintolan postinumero",<br>
+                "city": "kaupunki",<br>
+                "site": "ravintolan nettisivu",<br>
+                "desc": "kuvaus",<br>
+                "rating": arvostelu,<br>
+                "mon": "maanantai aukiolo",<br>
+                "tue": "tiistai aukiolo",<br>
+                "wed":"keskiviikko aukiolo",<br>
+                "thur":"torstai aukiolo",<br>
+                "fri": "perjantai aukiolo",<br>
+                "sat": "lauantai aukiolo",<br>
+                "sun": "sunnuntai aukiolo"<br>
+                }</td>
         </tr>
         <tr>
-            <th>/info</th>
-            <th>Palauttaa ravintoloiden ja käyttöliittymän kävijöiden määrän sekä ajan</th>
+            <td>GET</td>
+            <td>/info</td>
+            <td>Palauttaa ravintoloiden ja käyttöliittymän kävijöiden määrän sekä ajan</td>
         </tr>
         <tr>
-            <th>/ratings</th>
-            <th>Hakee arvostelut</th>
+            <td>GET</td>
+            <td>/api/reviews/all</td>
+            <td>Hakee kaikki arvostelut</td>
         </tr>
-
+        <tr>
+            <td>GET</td>
+            <td>/api/reviews/search/:searchBy/:param</td>
+            <td>Hae arvosteluja valitsemasi parametrin perusteella</td>
+            <td>/api/reviews/search/id/1</td>
+            <td>Palauttaa </td>
+        </tr>
+        
+ 
+        <tr>
+            <td>DELETE</td>
+            <td>/api/restaurant/:id</td>
+            <td>Poista ravintola id:llä</td>
+            <td>/api/restaurant/1</td>
+            <td>Poistaa ravintolan, jonka id on 1</td>
+        </tr>
 </body>
 </table>
 
