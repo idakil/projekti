@@ -182,7 +182,6 @@ nav ul li a:hover {
     width: 50%;
     display: inline-block;
     text-align: center;
-    justify-content: center;
 }
 #headerWrapper{
     width: 100%;
@@ -303,12 +302,11 @@ textarea{
     background-color: #222;
 }
 
-#openingHoursTable{
-border: 1px solid rgb(65, 130, 140);
-border-radius: 15px;
-margin-top: 10px;
-align-self: center;
-}
+  #openingHoursTable{
+    border: 1px solid rgb(65, 130, 140);
+    border-radius: 15px;
+    margin-top: 10px;
+  }
 
   td{
       text-align: left;
