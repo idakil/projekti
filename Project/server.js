@@ -10,10 +10,10 @@ const router = express.Router();
 const mysql = require('mysql');
 const mc = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
+  user: 'username',
   password: 'password',
   database: 'restaurant_db',
-  //port: '3308'
+  port: '3308'
 
 });
 let counter = 0

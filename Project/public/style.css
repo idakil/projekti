@@ -303,12 +303,12 @@ textarea{
     background-color: #222;
 }
 
-  #openingHoursTable{
-    border: 1px solid rgb(65, 130, 140);
-    border-radius: 15px;
-    margin-top: 10px;
-    align-self: center;
-  }
+#openingHoursTable{
+border: 1px solid rgb(65, 130, 140);
+border-radius: 15px;
+margin-top: 10px;
+align-self: center;
+}
 
   td{
       text-align: left;
