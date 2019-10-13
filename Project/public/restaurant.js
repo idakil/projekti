@@ -53,6 +53,7 @@ function getParameterByName(name, url) {
 // Give the parameter a variable name
 var dynamicContent = getParameterByName('id');
 getRestaurant(dynamicContent);
+getRatings(dynamicContent);
 
 function getRestaurant(d) {
     var url = '/restaurant/' + d;
@@ -61,6 +62,48 @@ function getRestaurant(d) {
         .then(function (data) {
             fillRestaurantInfo(data);
         });
+
+    
+}
+
+function getRatings(d) {
+    var url = '/rating/' + d;
+    fetch(url)
+        .then(r => r.json())
+        .then(function (data) {
+            fillRatings(data);
+        });
+
+}
+
+function fillRatings(d) {
+
+    let parent = document.getElementById("reviews");
+    for (let i = 0; i < d.length; i++) {
+        let review = document.createElement('div');
+        review.className = "oneReview";
+        let name = document.createElement('div');
+        name.className = "username";
+        name.innerHTML = d[i].userName;
+        let text = document.createElement('div');
+        let stars = document.createElement('div');
+        stars.className = 'stars';
+        let reviewRating = raterJs({
+            element: stars,
+            max: 5,
+            readOnly: true,
+            starSize: 16,
+        })
+        reviewRating.setRating(d[i].stars);
+
+        
+
+        text.className = 'text';
+        text.innerHTML = d[i].review;
+        review.append(name, text, stars);
+        parent.append(review);
+    }
+    console.log(d);
 }
 
 function fillRestaurantInfo(d) {
@@ -72,7 +115,9 @@ function fillRestaurantInfo(d) {
 
     addOpeningHours(restaurant)
     addContactInfo(restaurant)
+    console.log(restaurant.rating);
     if (restaurant.rating != null) {
+
         restaurantRating.setRating(restaurant.rating);
     }
     loadMap(restaurant);
@@ -152,3 +197,7 @@ function deleteRestaurant() {
 }
 
 
+
+function showReviews () {
+
+}

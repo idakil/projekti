@@ -156,7 +156,7 @@ app.get("/restaurant/:id", function (req, res) {
       //console.log("error ", err);
     }
     else {
-      console.log(result);
+      //console.log(result);
       res.send(result)
     }
   })
@@ -200,3 +200,19 @@ function sendRatings(req, res) {
     }
   })
 }
+
+app.get('/rating/:id', function (req, res) {
+  //console.log('ta' + req.params.id);
+  //let query = "select reviews.* from restaurants inner join reviews on restaurants.id = reviews.restaurant_id where restaurant_id =" + req.params.id;
+  let query = "select * from reviews where restaurant_id =" + req.params.id;
+  mc.query(query, function (err, result) {
+    if (err) {
+      console.log("error ", err);
+    }
+    else {
+      console.log(result);
+      res.send(result)
+    }
+  })
+
+})
