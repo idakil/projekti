@@ -16,18 +16,27 @@
                     <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
                     <li><a href="newRestaurant.html" id="a">lisää ravintola</a></li>
                     <li><a href="info.html" id="a">info</a></li>
-                    <li></li>
+                    <li style="float:right"><div id="loginDiv">
+                        <div id="loggedUser" onclick="showAuth()">
+                                
+                                <input type=text id="authDiv">
+                                      
+                        </div>
+                        <a href="/auth/google" id="login"></a>
+                    </div></li>    
                 </ul>
             </nav>
+            
         </div>
+        <div id="content"></div>
     </div>
 
     <div id="searchbar">
-            <input type="text" placeholder="Search.." id="searchfield" list="results">
-            <datalist id="results">
+        <input type="text" placeholder="Search.." id="searchfield" list="results">
+        <datalist id="results">
 
-            </datalist>
-    
+        </datalist>
+
     </div>
 
     <div id='content-wrapper'>
@@ -36,11 +45,7 @@
             </div>
         </div>
     </div>
-
-
-
     <script src="index.js"></script>
-
 
 </body>
 

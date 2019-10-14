@@ -312,3 +312,34 @@ textarea{
     color: black;
     font-size: 1.2em;
 }
+
+#login {
+    appearance: button;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+}
+
+#login:hover{
+    background-color: #222;
+}
+
+#loginDiv{
+    display: flex;
+}
+
+#a:hover{
+    color: #222;
+}
+
+#authDiv{
+    display: none;
+}

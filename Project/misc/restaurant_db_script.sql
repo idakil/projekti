@@ -75,4 +75,11 @@ create table reviews(
 insert into reviews values(null, 1, 5, "Mahtavaa ruokaa","Mirjami");
 insert into reviews values(null, 1, 2, "Aika pahaa lol","Karen-Ann");
 
+create table accounts(
+    id int not null AUTO_INCREMENT,
+    email varchar(100) not null,
+    token varchar(8000) not null,
+    iv varchar(255) not null,
+    primary key(id)
+);
 

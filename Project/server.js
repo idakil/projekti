@@ -1,9 +1,12 @@
 
 const express = require('express'),
   app = express(),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  passport = require('passport'),
+  auth = require('./auth');
 port = process.env.PORT || 3000;
-
+var session = require('express-session');
+const cookieSession = require('cookie-session')
 const path = require('path');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const router = express.Router();
@@ -14,11 +17,15 @@ const mc = mysql.createConnection({
   password: 'password',
   database: 'restaurant_db',
   //port: '3308'
-
 });
 let counter = 0
 
 mc.connect();
+
+const crypto = require('crypto');
+const algorithm = 'aes-256-cbc';
+const key = "KFODSDJjdijsij3jI98WRU83893"
+const iv = crypto.randomBytes(16);
 
 let server = app.listen(port);
 app.use(express.static('public'));
@@ -27,13 +34,24 @@ console.log('API server started on: ' + port);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cookieSession({
+  name:'session',
+  keys: ['key1', 'key2']
+}))
+
+
+
+auth(passport);
+app.use(passport.initialize());
+
 
 let io = require('socket.io')(server);
-
 io.on('connection', function (socket) {
   console.log('A user connected');
+  socket.emit("updateSigninStatus", session.user)
   counter++;
   socket.on('review', reviewToDatabase)
+  socket.on("deleteRestaurant", deleteRestaurant);
   socket.on('disconnect', function () {
     console.log('A user disconnected');
   });
@@ -116,7 +134,6 @@ app.post('/addRestaurant', urlencodedParser, function (req, res) {
         }
       });
     } else {
-
       io.emit("success", "no success")
     }
     res.send(response);
@@ -162,17 +179,24 @@ function sendRestaurants(req, res) {
 }
 
 app.delete("/api/restaurant/:id", function (req, res) {
-  let query = "delete from restaurants where id=" + req.params.id;
+  let s = deleteRestaurant(req.params, res);
+  console.log(s)
+  res.send(req.params.id + " poistettu")
+})
+
+function deleteRestaurant(req, res) {
+  let query = "delete from restaurants where id=" + req.id;
+  let success = true;
   mc.query(query, function (err, result) {
     if (err) {
-      //console.log("error ", err);
-    }
-    else {
-      console.log(result);
-      res.send(result);
+      console.log(err)
+      success = false;
     }
   })
-})
+  return success;
+}
+
+
 
 app.get("/restaurant/:id", function (req, res) {
   let query = "select * from restaurants where id=" + req.params.id;
@@ -182,7 +206,7 @@ app.get("/restaurant/:id", function (req, res) {
     }
     else {
       console.log(result);
-      res.send(result);
+      res.send(result)
     }
   })
 })
@@ -239,6 +263,7 @@ function sendRatings(req, res) {
   })
 }
 
+/*
 app.get("/api/reviews/all", function (req, res) {
   let query = "select * from reviews"
   mc.query(query, function (err, result) {
@@ -246,7 +271,7 @@ app.get("/api/reviews/all", function (req, res) {
     res.send(result)
   });
 })
-
+*/
 
 app.get("/api/reviews/search/:searchBy/:param", function (req, res) {
   let query = "select * from reviews where " + req.params.searchBy + " = '" + req.params.param + "'";
@@ -255,4 +280,62 @@ app.get("/api/reviews/search/:searchBy/:param", function (req, res) {
     res.send(result)
   });
 })
+
+app.get('/auth/google', passport.authenticate('google', {
+  scope: ['https://www.googleapis.com/auth/userinfo.profile']
+}));
+
+app.get("/api/reviews/all/token=:token", isUserAuthenticated,
+  function (req, res) {
+    let query = "select * from reviews"
+    mc.query(query, function (err, result) {
+      if (err) throw err;
+      res.send(result)
+    });
+})
+
+function isUserAuthenticated (req,res,next){
+  let query = "select * from accounts where token = ?"
+    mc.query(query, req.params.token, function (err, result) {
+      if (err) throw err;
+      if(result.length > 0){
+        next();
+      }else{
+        res.send("Authentication failed")
+      }
+    });
+}
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+      failureRedirect: '/'
+  }),
+  (req, res) => {
+    session.user = req.session.passport.user;
+    checkIfUserExists(res);
+  }
+);
+
+function checkIfUserExists(res){
+  let googleId = session.user.profile.id;
+  let query = "select * from accounts where emailId = ?";
+  mc.query(query, googleId, function (err, result) {
+    if (err) throw err;
+    if(result.length == 0){
+      let token = session.user.token;
+      console.log(token)
+      let q = "insert into accounts values(?,?,?)"
+      mc.query(q, [null, googleId, token], function (err, result) {
+      if (err) throw err;
+      });
+    }else{
+      session.user.token = result[0].token;
+    }
+  });
+  res.redirect('/');
+}
+
+
+
+
 
