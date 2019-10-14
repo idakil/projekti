@@ -205,7 +205,7 @@ app.get("/restaurant/:id", function (req, res) {
       //console.log("error ", err);
     }
     else {
-      console.log(result);
+      //console.log(result);
       res.send(result)
     }
   })
