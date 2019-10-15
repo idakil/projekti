@@ -176,21 +176,50 @@ function checkIfOpen(restaurant) {
 }
 
 socket.on("updateSigninStatus", updateSigninStatus);
+let token;
 function updateSigninStatus(isSignedIn) {
-    console.log("updatesigninstatus")
-    console.log(isSignedIn)
+    let userBut = document.getElementById("loggedUser");
     if (isSignedIn) {
+        token = isSignedIn.token;
         let firstLetter = isSignedIn.profile.given_name.charAt(0);
-        console.log(isSignedIn.profile)
-        document.getElementById("loggedUser").innerHTML = firstLetter;
-        document.getElementById("login").innerHTML = "Sign out";
+        let firstLast = isSignedIn.profile.family_name.charAt(0);
+        userBut.style.display = "block";
+        userBut.innerHTML = firstLetter + firstLast;
+        let log = document.getElementById("login");
+        log.innerHTML = "LOG OUT";
+        log.href ="/logout"
     } else {
-        document.getElementById("login").innerHTML = "Sign in";
+        userBut.style.display = "none";
     }
 }
 
-let authDiv = document.getElementById("authDiv");
-function showAuth(){
-    let person = window.prompt("AA")
+var modal = document.getElementById("authDiv");
+var btn = document.getElementById("loggedUser");
+var span = document.getElementsByClassName("close")[0];
 
+btn.onclick = function() {
+  modal.style.display = "block";
+  let p = document.getElementById("tokenText");
+  p.textContent = token;
 }
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+
+function copyToClipBoard() {
+    var text = document.getElementById("tokenText").innerText;
+    var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = text;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+    document.getElementById("copyBut").innerHTML = "Text copied to clipboard!";
+  } 

@@ -85,7 +85,6 @@ function updateRating(id, rating) {
 }
 
 function reviewToDatabase(data) {
-  console.log(data)
   let sql = "INSERT INTO reviews set ?";
   mc.query(sql, data, function (err, result) {
     if (err) throw err;
@@ -140,6 +139,16 @@ app.post('/addRestaurant', urlencodedParser, function (req, res) {
   })
 })
 
+app.put("/api/restaurant/:id", function (req,res){
+  var updatedCustomer = req.body; 
+  console.log(req.body)
+  let q = "update restaurants set ? where id = '" + req.params.id + "'";
+  mc.query(q, updatedCustomer, function (err, result) {
+    if (err) throw err;
+    res.send(updatedCustomer)
+  })
+})
+/*
 app.put("/api/restaurant/:id", function (req, res) {
   response = {
     id: null,
@@ -164,7 +173,7 @@ app.put("/api/restaurant/:id", function (req, res) {
     if (err) throw err;
     res.send(response)
   })
-})
+})*/
 
 function sendRestaurants(req, res) {
   let query = "select * from restaurants"
@@ -285,6 +294,13 @@ app.get('/auth/google', passport.authenticate('google', {
   scope: ['https://www.googleapis.com/auth/userinfo.profile']
 }));
 
+app.get('/logout', function(req, res){
+  session.user = null;
+  req.logout();
+  console.log(req.session)
+  res.redirect('/');
+});
+
 app.get("/api/reviews/all/token=:token", isUserAuthenticated,
   function (req, res) {
     let query = "select * from reviews"
@@ -323,7 +339,6 @@ function checkIfUserExists(res){
     if (err) throw err;
     if(result.length == 0){
       let token = session.user.token;
-      console.log(token)
       let q = "insert into accounts values(?,?,?)"
       mc.query(q, [null, googleId, token], function (err, result) {
       if (err) throw err;

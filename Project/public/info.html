@@ -28,36 +28,36 @@
     <p>Käyttöliittymässä voit lisätä, poistaa, etsiä ja muokata</p>
     <p>Alla olevia API-kutsuja voi vapaasti käyttää. Tiedot tulevat JSON-muodossa</p>
     <table id="infoTable">
-        <tr>
+        <tr class = "infoTableRow">
             <th>Tyyppi</th>
             <th>Kutsu</th>
             <th>Tiedot</th>
             <th colspan="2">Esimerkki</th>
         </tr>
-        <tr>
+        <tr class = "infoTableRow">
             <td>GET</td>
             <td>/restaurants</td>
             <td>Hakee kaikki ravintolat</td>
         </tr>
-        <tr>
+        <tr class = "infoTableRow">
         <td>GET</td>
         <td>/api/restaurants/search/:searchBy/:param</td>
         <td>Hae ravintoloita valitsemasi parametrin perusteella</td>
         <td>/api/restaurants/search/city/Helsinki</td>
         <td>Palauttaa Helsingissä olevat ravintolat</td>
     </tr>
-        <tr>
+        <tr class = "infoTableRow">
             <td>GET</td>
             <td>/restaurant/:id</td>
             <td>Hakee ravintolaa id:n perusteella</td>
             <td>/restaurant/1</td>
             <td>Palauttaa ravintolan, jonka id on 1</td>
         </tr>
-        <tr>
+        <tr class = "infoTableRow">
             <td>POST</td>
             <td>/addRestaurant</td>
             <td>Lisää ravintola</td>
-            <td colspan="2">{<br>
+            <td colspan="2"> body{<br>
                 "id": null,<br>
                 "name": "Ravintola",<br>
                 "address": "ravintolan osoite",<br>
@@ -75,17 +75,17 @@
                 "sun": "sunnuntai aukiolo"<br>
                 }</td>
         </tr>
-        <tr>
+        <tr class = "infoTableRow">
             <td>GET</td>
             <td>/info</td>
             <td>Palauttaa ravintoloiden ja käyttöliittymän kävijöiden määrän sekä ajan</td>
         </tr>
-        <tr>
+        <tr class = "infoTableRow">
             <td>GET</td>
             <td>/api/reviews/all</td>
             <td>Hakee kaikki arvostelut</td>
         </tr>
-        <tr>
+        <tr class = "infoTableRow">
             <td>GET</td>
             <td>/api/reviews/search/:searchBy/:param</td>
             <td>Hae arvosteluja valitsemasi parametrin perusteella</td>
@@ -94,12 +94,35 @@
         </tr>
         
  
-        <tr>
+        <tr class = "infoTableRow">
             <td>DELETE</td>
             <td>/api/restaurant/:id</td>
             <td>Poista ravintola id:llä</td>
             <td>/api/restaurant/1</td>
             <td>Poistaa ravintolan, jonka id on 1</td>
+        </tr>
+        <tr class = "infoTableRow">
+            <td>PUT</td>
+            <td>/api/restaurant/:id</td>
+            <td>Päivitä ravintolan tietoja</td>
+            <td colspan="2">
+                   body {<br>
+                        "restaurant_name": " TÄMÄONPÄIVITETTY",<br>
+                        "restaurant_address": "Hämeentie 48",<br>
+                        "zipcode": "00500",<br>
+                        "city": "Helsinki",<br>
+                        "link": "https://ravintolaida.fi",<br>
+                        "restaurant_desc": "parasta ruokaa ikinä",<br>
+                        "rating": null,<br>
+                        "monday": "1100-2000",<br>
+                        "tuesday": "1100-2000",<br>
+                        "wednesday":"0-2000",<br>
+                        "thursday":"1100-2000",<br>
+                        "friday": "1100-2000",<br>
+                        "saturday": "1100-2000",<br>
+                        "sunday": "1100-2000"<br>
+                    }
+            </td>
         </tr>
 </body>
 </table>

@@ -16,14 +16,23 @@
                     <li><a href="index.html"><img src="images/RESTAURANTLOGO.png" id="logoimg"></a></li>
                     <li><a href="newRestaurant.html" id="a">lisää ravintola</a></li>
                     <li><a href="info.html" id="a">info</a></li>
-                    <li style="float:right"><div id="loginDiv">
-                        <div id="loggedUser" onclick="showAuth()">       
+                    <li style="float:right">
+                        <div id="loginDiv">
+                            <button id="loggedUser" onclick="showAuth()"></button>
+                                <div id="authDiv" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <p id="tokenText"></p>
+                                        <button id="copyBut" onclick="copyToClipBoard()">Copy token</button>
+                                    </div>
+                                </div>
+                                <a href="/auth/google" id="login"><img id="googleicon" src="images/googleicon.png"
+                                        alt="googleicon"></a>
                         </div>
-                        <a href="/auth/google" id="login"></a>
-                    </div></li>    
+                    </li>
                 </ul>
             </nav>
-            
+
         </div>
         <div id="content"></div>
     </div>

@@ -78,7 +78,6 @@ function getRatings(d) {
 }
 
 function fillRatings(d) {
-
     let parent = document.getElementById("reviews");
     for (let i = 0; i < d.length; i++) {
         let review = document.createElement('div');
