@@ -130,12 +130,13 @@ app.post('/addRestaurant', urlencodedParser, function (req, res) {
         if (err) throw err;
         if (result.affectedRows > 0) {
           io.emit("success", "success")
+          res.send({message: "success", body:response})
         }
       });
     } else {
       io.emit("success", "no success")
+      res.send({message: "failed", body:response})
     }
-    res.send(response);
   })
 })
 
@@ -178,27 +179,35 @@ app.put("/api/restaurant/:id", function (req, res) {
 function sendRestaurants(req, res) {
   let query = "select * from restaurants"
   mc.query(query, function (err, result) {
-    if (err) {
-      console.log("error ", err);
-    }
-    else {
-      res.send(result)
-    }
+    if (err) throw err;
+    res.send(result)
   })
 }
 
-app.delete("/api/restaurant/:id", function (req, res) {
-  let s = deleteRestaurant(req.params, res);
-  console.log(s)
-  res.send(req.params.id + " poistettu")
+const validation = require('./validation')
+const {validationResult} = require('express-validator')
+
+app.delete("/api/restaurant/:id", validation.validate('delete'), function (req, res) {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){
+    res.end("eionnistu")
+  }
+    let s = deleteRestaurant(req.params, res);
+    if(s){
+      res.end(req.params.id + " poistettu")
+    }
+      res.end("Id not found")
+    
 })
 
 function deleteRestaurant(req, res) {
   let query = "delete from restaurants where id=" + req.id;
-  let success = true;
+  let success;
   mc.query(query, function (err, result) {
-    if (err) {
-      console.log(err)
+    if (err) throw err;
+    if(result.fieldCount != 0){
+      success = true;
+    }else{
       success = false;
     }
   })
