@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
@@ -9,7 +9,6 @@ var session = require('express-session');
 const cookieSession = require('cookie-session')
 const path = require('path');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-const router = express.Router();
 const mysql = require('mysql');
 const mc = mysql.createConnection({
   host: 'localhost',
@@ -21,11 +20,6 @@ const mc = mysql.createConnection({
 let counter = 0
 
 mc.connect();
-
-const crypto = require('crypto');
-const algorithm = 'aes-256-cbc';
-const key = "KFODSDJjdijsij3jI98WRU83893"
-const iv = crypto.randomBytes(16);
 
 let server = app.listen(port);
 app.use(express.static('public'));
@@ -39,11 +33,8 @@ app.use(cookieSession({
   keys: ['key1', 'key2']
 }))
 
-
-
 auth(passport);
 app.use(passport.initialize());
-
 
 let io = require('socket.io')(server);
 io.on('connection', function (socket) {
@@ -281,15 +272,15 @@ function sendRatings(req, res) {
   })
 }
 
-/*
-app.get("/api/reviews/all", function (req, res) {
-  let query = "select * from reviews"
-  mc.query(query, function (err, result) {
+
+app.get("/api/reviews/restaurant/id=:id", function (req, res) {
+  let query = "select * from reviews where restaurant_id = ?"
+  mc.query(query, req.params.id,function (err, result) {
     if (err) throw err;
     res.send(result)
   });
 })
-*/
+
 
 app.get("/api/reviews/search/:searchBy/:param", function (req, res) {
   let query = "select * from reviews where " + req.params.searchBy + " = '" + req.params.param + "'";

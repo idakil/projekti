@@ -5,9 +5,9 @@ module.exports = (passport) => {
     });    passport.deserializeUser((user, done) => {
         done(null, user);
     });    passport.use(new GoogleStrategy({
-            clientID: '1023100294613-1eudk5g4dnrnsfc5tsfmvhcmgee25du5.apps.googleusercontent.com',
-            clientSecret: 'BpDkRaS43trPOs3bAzS0QsFJ' ,
-            callbackURL: 'http://localhost:3000/auth/google/callback'
+            clientID: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            callbackURL: process.env.CALLBACK_URL
         },
         (token, refreshToken, profile, done) => {
             return done(null, {

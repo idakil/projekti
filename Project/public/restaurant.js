@@ -68,10 +68,11 @@ function getRestaurant(d) {
 }
 
 function getRatings(d) {
-    var url = '/rating/' + d;
+    var url = '/api/reviews/restaurant/id=' + d;
     fetch(url)
         .then(r => r.json())
         .then(function (data) {
+            console.log(data)
             fillRatings(data);
         });
 
@@ -103,7 +104,6 @@ function fillRatings(d) {
         review.append(name, text, stars);
         parent.append(review);
     }
-    console.log(d);
 }
 
 function fillRestaurantInfo(d) {
@@ -115,7 +115,6 @@ function fillRestaurantInfo(d) {
 
     addOpeningHours(restaurant)
     addContactInfo(restaurant)
-    console.log(restaurant.rating);
     if (restaurant.rating != null) {
 
         restaurantRating.setRating(restaurant.rating);
@@ -152,7 +151,6 @@ function loadMap(restaurant) {
         .then(r => r.json())
         .then(function (res) {
             res.features.forEach(element => {
-                console.log(element.context[0].text)
                 if (element.context[0].text === restaurant.zipcode) {
                     showMap(element.center)
                 }
