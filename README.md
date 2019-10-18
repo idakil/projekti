@@ -72,3 +72,4 @@ body {
 ## TODO
 - validation for all api calls
 - authentication for all api calls
+- cleaning code - separate file for mysql 
