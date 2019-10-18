@@ -41,7 +41,7 @@ A web application to find restaurants that serve vegan food
 Add restaurant and update restaurant body example: 
 ```json
 body {
-    "id": null                              
+    "id": null,                              
     "restaurant_name": "Idan Ravintola",
     "restaurant_address": "Hämeentie 48",
     "zipcode": "00500",
@@ -62,4 +62,13 @@ body {
 - rating is not updated
 - opening hours are like that to make calculating easier
 ### Login and authentication
-**Login** is done with Google and after login you are given an **access token**. At the moment authentication is used only with /api/reviews/all/ 
+**Login** is done with Google and after login you are given an **access token**. At the moment authentication is used only with **/api/reviews/all/**. Token can be found on home page after clicking on a button with user's initials on it.
+
+### API Validation
+**DONE**
+- add restaurant
+- delete restaurant 
+
+## TODO
+- validation for all api calls
+- authentication for all api calls
