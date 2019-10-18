@@ -145,7 +145,7 @@ function addOpeningHours(restaurant){
 }
 
 function loadMap(restaurant) {
-    mapboxgl.accessToken = "pk.eyJ1IjoiaWRha2lsIiwiYSI6ImNrMGY1bzY4ZzBmdnEzZ21wYTNobzhyZTMifQ._VUUN_v2-EQlsPAwsaQUOA";
+    mapboxgl.accessToken = "pk.eyJ1IjoiaWRha2lsIiwiYSI6ImNrMGY1bzY4ZzBmdnEzZ21wYTNobzhyZTMifQ._VUUN_v2-EQlsPAwsaQUOA"
     let nameURI = encodeURI(restaurant.restaurant_address)
     fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + nameURI + ".json?access_token=" + mapboxgl.accessToken + "&cachebuster=1570368776986&autocomplete=true&country=fi")
         .then(r => r.json())

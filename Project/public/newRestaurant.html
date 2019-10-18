@@ -27,33 +27,33 @@
         <form action="/addRestaurant" method="POST" target="hiddenFrame">
 
             <fieldset>
-                <div id="inputDiv_1"><label>Ravintolan nimi: </label><input required class="inputField" type="text" name="name"></div>
+                <div id="inputDiv_1"><label>Ravintolan nimi: </label><input required class="inputField" type="text" name="restaurant_name"></div>
 
             </fieldset>
             <fieldset>
-                <div id="inputDiv_2"><label>Osoite: </label><input required class="inputField" type="text" name="address"></div>
-                <div id="inputDiv_3"><label>Postinumero: </label><input required pattern="\d{5}" title="Esimerkiksi 00100" class="inputField" type="text" name="zip"><label>Kaupunki: </label> <input class="inputField" type="text" name="city"></div>
+                <div id="inputDiv_2"><label>Osoite: </label><input required class="inputField" type="text" name="restaurant_address"></div>
+                <div id="inputDiv_3"><label>Postinumero: </label><input required pattern="\d{5}" title="Esimerkiksi 00100" class="inputField" type="text" name="zipcode"><label>Kaupunki: </label> <input class="inputField" type="text" name="city"></div>
 
             </fieldset>
             <fieldset>
-                <div id="inputDiv_4"><label>Verkkosivu: </label><input class="inputField" type="text" name="site"></div>
-                <div id="inputDiv_5"> <label>Kuvaus: </label> <input class="inputField" type="text" name="desc"></div>
+                <div id="inputDiv_4"><label>Verkkosivu: </label><input class="inputField" type="text" name="link"></div>
+                <div id="inputDiv_5"> <label>Kuvaus: </label> <input class="inputField" type="text" name="restaurant_desc"></div>
             </fieldset>
             <fieldset>
-                <div id="inputDiv_6"><label>Maanantai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="mon" placeholder="0800-1600">
+                <div id="inputDiv_6"><label>Maanantai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="monday" placeholder="0800-1600">
                 </div>
-                <div id="inputDiv_7"><label>Tiistai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="tue" placeholder="0800-1600">
+                <div id="inputDiv_7"><label>Tiistai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="tuesday" placeholder="0800-1600">
                 </div>
-                <div id="inputDiv_8"><label>Keskiviikko: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="wed"
+                <div id="inputDiv_8"><label>Keskiviikko: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="wednesday"
                         placeholder="0800-1600">
                 </div>
-                <div id="inputDiv_9"><label>Torstai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="thur" placeholder="0800-1600">
+                <div id="inputDiv_9"><label>Torstai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="thursday" placeholder="0800-1600">
                 </div>
-                <div id="inputDiv_10"><label>Perjantai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="fri" placeholder="0800-1600">
+                <div id="inputDiv_10"><label>Perjantai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="friday" placeholder="0800-1600">
                 </div>
-                <div id="inputDiv_11"><label>Lauantai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="sat" placeholder="0800-1600">
+                <div id="inputDiv_11"><label>Lauantai: </label><input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="saturday" placeholder="0800-1600">
                 </div>
-                <div id="inputDiv_12"><label>Sunnuntai: </label> <input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="sun"
+                <div id="inputDiv_12"><label>Sunnuntai: </label> <input required pattern="\d{4}[\-]\d{4}" title="Aukioloaika täytyy olla tyyliin 0600-1600" class="inputField" type="text" name="sunday"
                         placeholder="0800-1600">
                 </div>
             </fieldset>
