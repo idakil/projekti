@@ -17,12 +17,16 @@ exports.validate = (method) =>{
                 check('friday', 'Monday opening hours missing').matches('[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
                 check('saturday', 'Monday opening hours missing').matches('[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
                 check('sunday', 'Monday opening hours missing').matches('[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]')
-
             ]
         }
-        case 'delete':{
+        case 'validateId':{
             return[
-                check('id', 'Id does not exist').isNumeric()
+                check('id', 'Id does not exist or is not numeric').isNumeric()
+            ]
+        }
+        case 'validateSearchReviews':{
+            return [
+                check('searchBy', 'Column with given parameter not found').equals('username' || 'stars')
             ]
         }
         }
