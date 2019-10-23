@@ -1,4 +1,4 @@
-const {check} = require('express-validator')
+const {check, param} = require('express-validator')
 
 exports.validate = (method) =>{
     switch(method){
@@ -6,7 +6,7 @@ exports.validate = (method) =>{
             return [
                 check('restaurant_name', 'Restaurant name missing').exists(),
                 check('restaurant_address', 'Restaurant address missing').exists(),
-                check('zipcode', 'Zip code invalid').isNumeric().isLength({min: 3}),
+                check('zipcode', 'Zip code invalid').isNumeric().isLength({min: 5}),
                 check('city', 'City is missing').exists(),
                 check('link', 'Website invalid').isURL(),
                 check('restaurant_desc', 'Description missing').exists(),
@@ -21,13 +21,23 @@ exports.validate = (method) =>{
         }
         case 'validateId':{
             return[
-                check('id', 'Id does not exist or is not numeric').isNumeric()
+                param('id', 'Id is empty or is not numeric').isNumeric()
             ]
         }
         case 'validateSearchReviews':{
             return [
-                check('searchBy', 'Column with given parameter not found').equals('username' || 'stars')
+                check('searchBy', 'Column with given parameter not found').isIn(reviewsColumns)
+            ]
+        }
+        case 'reviewBody':{
+            return[
+                check('restaurant_id', 'Restaurant id invalid').isNumeric(),
+                check('stars', 'Star rating invalid').isInt({min: 1, max:5}),
+                check('review', 'Review empty').isLength({min: 1}),
+                check('userName', 'Username missing').exists()
             ]
         }
         }
     }
+
+    let reviewsColumns = ['id', 'restaurant_id', 'stars', 'review', 'userName']

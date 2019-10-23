@@ -94,7 +94,10 @@ function reviewToDatabase(data) {
   });
 }
 
-app.post('/addRestaurant', urlencodedParser, validation.validate('newRestaurant'), function (req, res) {
+/**
+ * Add new restaurant to database, requires authentication
+ */
+app.post('/addRestaurant/token=:token', urlencodedParser, validation.validate('newRestaurant'),isUserAuthenticated, function (req, res) {
   response = req.body;
   response.id = null;
   response.rating = null;
@@ -180,10 +183,10 @@ async function checkIfRestaurantExistsWithId(id) {
  * Delete restaurant with id.
  * Validate id input
  */
-app.delete("/api/restaurant/:id", validation.validate('validateId'), function (req, res) {
+app.delete("/api/restaurant/:id/token=:token", validation.validate('validateId'), isUserAuthenticated, function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.end(errors)
+    res.send(errors)
   }
   else {
     deleteRestaurant(req, res);
@@ -250,7 +253,7 @@ app.get("/info", function (req, res) {
 /**
  * Get restaurant's reviews with restaurant id
  */
-app.get("/api/reviews/restaurant/id=:id", function (req, res) {
+app.get("/api/reviews/restaurant_id=:id", function (req, res) {
   let query = "select * from reviews where restaurant_id = ?"
   mc.query(query, req.params.id, function (err, result) {
     if (err) throw err;
@@ -261,13 +264,19 @@ app.get("/api/reviews/restaurant/id=:id", function (req, res) {
 /**
  * Add review
  */
-app.post("/addReview", urlencodedParser, (req,res)=>{
+app.post("/addReview", urlencodedParser, validation.validate('reviewBody'), (req,res)=>{
   let q = "insert into reviews set ?"
   let newReview = req.body;
-  mc.query(q, newReview, function (err, result) {
-    if (err) throw err;
-    result.affectedRows > 0 ? res.send("success") : res.send("failed")
-  });
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.send(errors)
+  } else {
+    mc.query(q, newReview, function (err, result) {
+      if (err) throw err;
+      result.affectedRows > 0 ? res.send({message:"success", body:newReview}) : res.send({message:"failed", body:newReview})
+    });
+  }
 })
 
 /**
@@ -290,17 +299,22 @@ app.put('/api/reviews/:reviewId', (req, res)=>{
 /**
  * Delete review with id
  */
-app.delete('/api/reviews/:reviewId', (req,res)=>{
+app.delete('/api/reviews/:id', validation.validate('validateId'), (req,res)=>{
   let q = "delete from reviews where id = ?"
   let review = req.body;
-  mc.query(q, req.params.reviewId, function (err, result) {
-    if (err) throw err;
-    if(result.affectedRows > 0){
-      res.send({ message: "success", deleted: review })
-    }else{
-      res.send({message: "delete failed"})
-    }
-  })
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.send(errors)
+  } else {
+    mc.query(q, req.params.id, function (err, result) {
+      if (err) throw err;
+      if(result.affectedRows > 0){
+        res.send({ message: "success", deleted: review })
+      }else{
+        res.send({message: "delete failed"})
+      }
+    })
+  }
 })
 
 /**

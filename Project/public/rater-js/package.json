@@ -69,5 +69,8 @@
     "test": "mocha --require ignore-styles"
   },
   "types": "index.d.ts",
-  "version": "1.0.1"
+  "version": "1.0.1",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }

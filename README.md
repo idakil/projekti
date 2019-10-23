@@ -23,12 +23,12 @@ A web application to find restaurants that serve vegan food
 | TYPE| EXPLANATION| EXAMPLE|
 | ------ | ------ |------ |
 | GET| get all the restaurants from database | /api/restaurant/all |
-| GET| get the restaurant with corresponding id | /api/restaurant/1 |
-| PUT |update restaurant with corresponding id | /api/restaurant/1 |
-| DELETE|delete restaurant with corresponding id| /api/restaurant/1 |
-| POST|add restaurant| /addRestaurant |
+| GET| get the restaurant with corresponding id | /api/restaurant/**_restaurantID_** |
+| PUT |update restaurant with corresponding id | /api/restaurant/**_restaurantID_** |
+| DELETE|delete restaurant with corresponding id| /api/restaurant/**_restaurantID_**/token=**_token_** |
+| POST|add restaurant| /addRestaurant/token=**_token_** |
 | GET| search restaurants with given parameters| /api/restaurants/search/**_City_**/**_Helsinki_** |
-| GET| get a single restaurant's reviews|/api/reviews/restaurant/id=1|
+| GET| get a single restaurant's reviews|/api/reviews/restaurant_id=1|
 | GET| search reviews with given parameters| /api/reviews/search/**_Username_**/**_Matti_**
 | GET| get all reviews|/api/reviews/all/token=**_token_**|
 | PUT| update review with corresponding id|/api/reviews/1|
@@ -77,12 +77,18 @@ Add review and update review body example:
 } 
 ```
 ### Login and authentication
-**Login** is done with Google and after login you are given an **access token**. At the moment authentication is used only with **/api/reviews/all/**. Token can be found on home page after clicking on a button with user's initials on it. Only one token is created per google user.
+**Login** is done with Google and after login you are given an **access token**. Token can be found on home page after clicking on a button with user's initials on it. Only one token is created per google user.
+**Authentication used with:** 
+- POST /addRestaurant/token=
+- DELETE /api/restaurant/**_id_**/token=
+- GET /api/reviews/all/token=
 
 ### API Validation
 **DONE**
 - add restaurant/update restaurant input body validation
 - input id validation
+- add review/update review input body validation
+- search by values
 
 ## TODO
 - validation for all api calls
