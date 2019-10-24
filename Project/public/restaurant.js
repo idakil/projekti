@@ -68,7 +68,7 @@ function getRestaurant(d) {
 }
 
 function getRatings(d) {
-    var url = '/api/reviews/restaurant/id=' + d;
+    var url = '/api/reviews/restaurant_id=' + d;
     fetch(url)
         .then(r => r.json())
         .then(function (data) {

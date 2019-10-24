@@ -77,20 +77,29 @@ Add review and update review body example:
 } 
 ```
 ### Login and authentication
-**Login** is done with Google and after login you are given an **access token**. Token can be found on home page after clicking on a button with user's initials on it. Only one token is created per google user.
+**Login** is done with Google and after login you are given an **access token**. Token can be found on home page after clicking on a button with user's initials on it. Only one token is created per Google user.
 **Authentication used with:** 
 - POST /addRestaurant/token=
 - DELETE /api/restaurant/**_id_**/token=
 - GET /api/reviews/all/token=
 
 ### API Validation
-**DONE**
 - add restaurant/update restaurant input body validation
 - input id validation
 - add review/update review input body validation
 - search by values
 
+### Used APIs
+- https://docs.mapbox.com/mapbox-gl-js/api/
+- https://picsum.photos/
+
+### Dotenv
+- .env file used for storing Google id and secret
+- example file found in repo example-env.txt
+
 ## TODO
 - validation for all api calls
-- authentication for all api calls
+- authentication for update restaurant and add/delete/update reviews
 - cleaning code - separate file for mysql 
+- search bar working correctly
+- change opening hours to Date Time thing
